@@ -82,3 +82,11 @@ Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tab
 //new
 Route::get('/event/create-event', $controller_path . '\events\eventController@index')->name('form-layouts-create-event');
 Route::get('/meet/create-meet', $controller_path . '\test\testController@index')->name('form-layouts-create-event');
+
+
+// Meets
+Route::get('/meet/addmeet', $controller_path . '\meet\MeetController@addMeet')->name('add-meet');
+Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->name('get-meet');
+
+// Athletes
+Route::get('/athlete/addathlete', $controller_path . '\athlete\AthleteController@addAthlete')->name('add-athlete');
