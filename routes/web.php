@@ -78,3 +78,7 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 
 // tables
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
+
+//new
+Route::get('/event/create-event', $controller_path . '\events\eventController@index')->name('form-layouts-create-event');
+Route::get('/meet/create-meet', $controller_path . '\test\testController@index')->name('form-layouts-create-event');
