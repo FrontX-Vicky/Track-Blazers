@@ -15,6 +15,6 @@ class MeetSeeder extends Seeder
      */
     public function run()
     {
-        st
+        //
     }
 }
