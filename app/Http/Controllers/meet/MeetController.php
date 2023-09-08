@@ -13,22 +13,28 @@ class MeetController extends Controller
     return view('content.layouts-example.layouts-container');
   }
 
-  public function addMeet()
+  public function createMeet()
   {
-    $json =
-      [
-          "id" => 1,
-          "name" => "Meet 1",
-          "location"=> "Mumbai",
-          "from_date"=> "2023-09-04",
-          "to_date"=> "2023-09-07",
-          "scoring"=> 1,
-          "created_by"=> "12345",
-          "modified_by"=> "",
-          "created_at"=> null,
-          "updated_at"=> null
-    ];
-    // return view('content.layouts-example.layouts-container');
+    // $json =
+    //   [
+    //       "id" => 1,
+    //       "name" => "Meet 1",
+    //       "location"=> "Mumbai",
+    //       "from_date"=> "2023-09-04",
+    //       "to_date"=> "2023-09-07",
+    //       "scoring"=> 1,
+    //       "created_by"=> "12345",
+    //       "modified_by"=> "",
+    //       "created_at"=> null,
+    //       "updated_at"=> null
+    // ];
+    return view('content.meet.createmeet');
+  }
+
+  public function insertMeet(Request $req)
+  {
+    dd($req);
+    // return view('content.meet.createmeet');
   }
 
 
