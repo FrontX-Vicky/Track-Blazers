@@ -15,14 +15,34 @@
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/layouts/without-menu",
+          "url": "/layout/event",
           "name": "Manage Meets",
           "slug": "layouts-without-menu"
         },
         {
-          "url": "/layouts/without-navbar",
+          "url": "/meet/create-meet",
           "name": "Create Meet",
-          "slug": "layouts-without-navbar"
+          "slug": ""
+        }
+      ]
+    },
+    {
+      "menuHeader": "Events"
+    },
+    {
+      "name": "Events",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "slug": "layouts",
+      "submenu": [
+        {
+          "url": "/layout/event",
+          "name": "Manage Events",
+          "slug": "layouts-without-menu"
+        },
+        {
+          "url": "/event/create-event",
+          "name": "Create Event",
+          "slug": ""
         }
       ]
     },
