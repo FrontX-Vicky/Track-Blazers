@@ -14,7 +14,9 @@
 
 <div class="row">
     <div class="col-md mb-4 mb-md-0">
-        <form class="needs-validation" id="date-form" novalidate>
+        <form class="needs-validation" id="date-form" novalidate method="POST" action="/meet/insert-meet">
+            @csrf
+            @method('POST')
             <fieldset class="border rounded-3 px-3 bg-white">
                 <legend class="float-none w-auto px-3 fs-5">New Meet</legend>
                 <div class="mb-3">
@@ -49,7 +51,7 @@
     </div>
 </div>
 
-<script type="text/javascript">  
+<script type="text/javascript">
     $(document).ready(function() {
         $('#from-date').datepicker({
             format: 'dd-mm-yyyy',
