@@ -5,6 +5,7 @@ namespace App\Http\Controllers\meet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Meets;
 
 class MeetController extends Controller
 {
@@ -33,15 +34,15 @@ class MeetController extends Controller
 
   public function insertMeet(Request $req)
   {
-    dd($req);
+    dd($req->all());
     // return view('content.meet.createmeet');
   }
 
 
   public function getMeet()
   {
-    $meet = DB::table('meets')->get();
-    return $meet;
+    $meets = Meets::all();
+    return($meets);
     // return view('content.layouts-example.layouts-container');
   }
 
