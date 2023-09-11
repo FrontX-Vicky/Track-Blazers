@@ -15,7 +15,7 @@
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/layout/event",
+          "url": "/meet",
           "name": "Manage Meets",
           "slug": "layouts-without-menu"
         },

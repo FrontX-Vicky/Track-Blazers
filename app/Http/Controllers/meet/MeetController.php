@@ -11,38 +11,38 @@ class MeetController extends Controller
 {
   public function index()
   {
-    return view('content.layouts-example.layouts-container');
+    $meets = Meets::simplePaginate(10);
+    // $data = compact('meets');
+    return view('content.meet.manage-meets', ['data' => $meets]);
   }
 
   public function createMeet()
   {
-    // $json =
-    //   [
-    //       "id" => 1,
-    //       "name" => "Meet 1",
-    //       "location"=> "Mumbai",
-    //       "from_date"=> "2023-09-04",
-    //       "to_date"=> "2023-09-07",
-    //       "scoring"=> 1,
-    //       "created_by"=> "12345",
-    //       "modified_by"=> "",
-    //       "created_at"=> null,
-    //       "updated_at"=> null
-    // ];
     return view('content.meet.createmeet');
   }
 
   public function insertMeet(Request $req)
   {
-    dd($req->all());
+    // dd($req->all());
+
     // return view('content.meet.createmeet');
+    $meets = new Meets;
+    $meets->name = $req['name'];
+    $meets->location = $req['location'];
+    $meets->from_date	 = $req['from_date'];
+    $meets->to_date = $req['to_date'];
+    $meets->scoring = isset($req['scoring']) ? $req['scoring']: '0';
+    $meets->created_by = "48077";
+    $meets->created_at = date("Y-m-d h:i:s");
+    $meets->save();
+    return redirect()->route('meets');
   }
 
 
   public function getMeet()
   {
-    $meets = Meets::all();
-    return($meets);
+
+    // return($meets);
     // return view('content.layouts-example.layouts-container');
   }
 
