@@ -80,11 +80,14 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
 
 //new
-Route::get('/event/create-event', $controller_path . '\events\eventController@index')->name('form-layouts-create-event');
 Route::get('/test/test', $controller_path . '\test\testController@index')->name('form-layouts-create-event');
 
+// Events
+Route::get('/event/create-event/{id?}', $controller_path . '\events\eventController@createEvent')->name('create-event');
+Route::post('/event/insert-event', $controller_path . '\events\eventController@insertEvent')->name('insert-event');
 
 // Meets
+Route::get('/meet', $controller_path . '\meet\MeetController@index')->name('meets');
 Route::get('/meet/create-meet', $controller_path . '\meet\MeetController@createMeet')->name('create-meet');
 Route::post('/meet/insert-meet', $controller_path . '\meet\MeetController@insertMeet')->name('insert-meet');
 Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->name('get-meet');

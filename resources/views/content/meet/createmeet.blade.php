@@ -20,26 +20,30 @@
             <fieldset class="border rounded-3 px-3 bg-white">
                 <legend class="float-none w-auto px-3 fs-5">New Meet</legend>
                 <div class="mb-3">
-                    <label for="meet-name" class="form-label">Meet Name</label>
-                    <input type="text" id="meet-name" class="form-control" name="meet-name" required>
+                    <label for="name" class="form-label">Meet Name</label>
+                    <input type="text" id="name" class="form-control" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Meet Location</label>
+                    <input type="text" id="location" class="form-control" name="location" required>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-md-6">
-                        <label for="from-date" class="form-label">From Date</label>
-                        <input type="date" class="form-control datepicker" id="from-date" name="from-date"
+                        <label for="from_date" class="form-label">From Date</label>
+                        <input type="date" class="form-control datepicker" id="from_date" name="from_date"
                             placeholder="Select a date"  required>
                     </div>
                     <div class="col-md-6">
-                        <label for="to-date" class="form-label">To Date</label>
-                        <input type="date" class="form-control datepicker" id="to-date" name="to-date"
+                        <label for="to_date" class="form-label">To Date</label>
+                        <input type="date" class="form-control datepicker" id="to_date" name="to_date"
                             placeholder="Select a date"  required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="score-competition"
-                            name="score-competition" required>
-                        <label class="form-check-label" for="score-competition">Score Competition</label>
+                        <input type="checkbox" class="form-check-input" id="scoring"
+                            name="scoring" required>
+                        <label class="form-check-label" for="scoring">Score Competition</label>
                     </div>
                 </div>
                 <div class="mb-3 text-center">
