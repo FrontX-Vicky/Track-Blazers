@@ -92,5 +92,8 @@ Route::get('/meet/create-meet', $controller_path . '\meet\MeetController@createM
 Route::post('/meet/insert-meet', $controller_path . '\meet\MeetController@insertMeet')->name('insert-meet');
 Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->name('get-meet');
 
+
 // Athletes
-Route::get('/athlete/addathlete', $controller_path . '\athlete\AthleteController@addAthlete')->name('add-athlete');
+Route::get('/athletes', $controller_path . '\athlete\AthleteController@index')->name('athletes');
+Route::get('/athlete/create-athlete', $controller_path . '\athlete\AthleteController@createAthlete')->name('create-athlete');
+Route::post('/athlete/insert-athlete', $controller_path . '\athlete\AthleteController@insertAthlete')->name('create-athlete');

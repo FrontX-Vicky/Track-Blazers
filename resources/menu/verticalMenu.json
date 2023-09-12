@@ -35,7 +35,7 @@
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/layout/event",
+          "url": "/event",
           "name": "Manage Events",
           "slug": "layouts-without-menu"
         },
@@ -46,37 +46,23 @@
         }
       ]
     },
-
     {
-      "name": "Layouts",
+      "menuHeader": "Athlets"
+    },
+    {
+      "name": "Athlets",
       "icon": "menu-icon tf-icons bx bx-layout",
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/layouts/without-menu",
-          "name": "Without menu",
+          "url": "/athlete/event",
+          "name": "Manage Events",
           "slug": "layouts-without-menu"
         },
         {
-          "url": "/layouts/without-navbar",
-          "name": "Without navbar",
-          "slug": "layouts-without-navbar"
-        },
-        {
-          "url": "/layouts/container",
-          "name": "Container",
-          "slug": "layouts-container"
-        },
-        {
-          "url": "/layouts/fluid",
-          "name": "Fluid",
-          "slug": "layouts-fluid"
-        },
-        {
-          "url": "/layouts/blank",
-          "name": "Blank",
-          "slug": "layouts-blank",
-          "target": "_blank"
+          "url": "/athlete/create-athlete",
+          "name": "Create Athlets",
+          "slug": ""
         }
       ]
     }
