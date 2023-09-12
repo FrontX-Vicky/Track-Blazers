@@ -41,9 +41,8 @@ class MeetController extends Controller
 
   public function getMeet()
   {
-
-    // return($meets);
-    // return view('content.layouts-example.layouts-container');
+     $meets['data'] = Meets::all();
+     return json_encode($meets);
   }
 
 
