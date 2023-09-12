@@ -23,8 +23,7 @@ return new class extends Migration
           $table->integer('status')->default(0);
           $table->string('created_by');
           $table->string('modified_by')->default('');
-          $table->timestamps();
-          $table->timestamp('updated_at')->useCurrentOnUpdate();
+          $table->timestamp('updated_at');
         });
     }
 
