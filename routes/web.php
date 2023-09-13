@@ -97,3 +97,6 @@ Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->
 Route::get('/athletes', $controller_path . '\athlete\AthleteController@index')->name('athletes');
 Route::get('/athlete/create-athlete', $controller_path . '\athlete\AthleteController@createAthlete')->name('create-athlete');
 Route::post('/athlete/insert-athlete', $controller_path . '\athlete\AthleteController@insertAthlete')->name('create-athlete');
+
+//score panel
+Route::get('/score/score-panel', $controller_path . '\score\ScoreController@index')->name('score-panel');
