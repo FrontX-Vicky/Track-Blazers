@@ -105,3 +105,6 @@ Route::post('/score/update-score', $controller_path . '\score\ScoreController@up
 
 //score panel
 Route::get('/score/score-panel-app', $controller_path . '\score\ScoreController@showScorepanelApp')->name('show-score-panel');
+
+// Uploads
+Route::get('/uploads/upload-attachment', $controller_path . '\uploads\UploadController@index')->name('upload-attachment');
