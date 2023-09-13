@@ -20,8 +20,8 @@
             <fieldset class="border rounded-3 px-3 bg-white">
                 <legend class="float-none w-auto px-3 fs-5">New Athlete</legend>
                 <div class="mb-3">
-                    <label for="athlete_id" class="form-label">ID#</label>
-                    <input type="text" id="athlete_id" class="form-control" name="athlete_id" required>
+                    <label for="athlete_uid" class="form-label">ID#</label>
+                    <input type="text" id="athlete_uid" class="form-control" name="athlete_uid" required>
                 </div>
                 <div class="mb-3">
                     <label for="fname" class="form-label">First Name</label>
@@ -39,8 +39,8 @@
                     <label for="gender" class="form-label">Gender</label>
                     <select class="form-select form-select-sm" id="gender" name="gender" required="">
                         <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </div>
                 {{-- <div class="mb-3">
@@ -52,8 +52,8 @@
                     </select>
                 </div> --}}
                 <div class="mb-3">
-                    <label for="gender" class="form-label">Event</label>
-                    <select class="form-select form-select-sm" id="gender" name="gender" required="">
+                    <label for="event_id" class="form-label">Event</label>
+                    <select class="form-select form-select-sm" id="event_id" name="event_id" required="">
                         <option value="">Select Event</option>
                         <option value="10">Event 1</option>
                         <option value="11">Event 2</option>

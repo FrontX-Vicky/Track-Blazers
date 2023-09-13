@@ -99,4 +99,9 @@ Route::get('/athlete/create-athlete', $controller_path . '\athlete\AthleteContro
 Route::post('/athlete/insert-athlete', $controller_path . '\athlete\AthleteController@insertAthlete')->name('create-athlete');
 
 //score panel
-Route::get('/score/score-panel', $controller_path . '\score\ScoreController@index')->name('score-panel');
+Route::get('/score/', $controller_path . '\score\ScoreController@index')->name('show-score-panel');
+Route::post('/score/score-panel', $controller_path . '\score\ScoreController@showScorepanel')->name('show-score-panel');
+Route::post('/score/update-score', $controller_path . '\score\ScoreController@updateScore')->name('update-score');
+
+//score panel
+Route::get('/score/score-panel-app', $controller_path . '\score\ScoreController@showScorepanelApp')->name('show-score-panel');
