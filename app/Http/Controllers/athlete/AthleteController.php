@@ -26,15 +26,17 @@ class AthleteController extends Controller
 
     // dd($req->all());
     $athlete = new Athletes;
-    $athlete->athlete_id = $req['athlete_id'];
+    $athlete->athlete_uid = $req['athlete_uid'];
     $athlete->fname = $req['fname'];
     $athlete->lname	 = $req['lname'];
     $athlete->affiliation	 = $req['affiliation'];
     $athlete->gender = $req['gender'];
-    $athlete->event_id = isset($req['scoring']) ? $req['scoring']: '0';
+    $athlete->event_id = $req['event_id'];
     $athlete->created_by = "48077";
     $athlete->created_at = date("Y-m-d h:i:s");
     $athlete->save();
     return redirect()->route('athletes');
   }
+
+
 }
