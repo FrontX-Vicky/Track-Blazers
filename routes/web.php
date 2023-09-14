@@ -91,6 +91,8 @@ Route::get('/meet', $controller_path . '\meet\MeetController@index')->name('meet
 Route::get('/meet/create-meet', $controller_path . '\meet\MeetController@createMeet')->name('create-meet');
 Route::post('/meet/insert-meet', $controller_path . '\meet\MeetController@insertMeet')->name('insert-meet');
 Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->name('get-meet');
+Route::post('/meet/insert-athletes', $controller_path . '\meet\MeetController@insertAthletes')->name('get-meet');
+
 
 
 // Athletes
@@ -107,4 +109,7 @@ Route::post('/score/update-score', $controller_path . '\score\ScoreController@up
 Route::get('/score/score-panel-app', $controller_path . '\score\ScoreController@showScorepanelApp')->name('show-score-panel');
 
 // Uploads
-Route::get('/uploads/upload-attachment', $controller_path . '\uploads\UploadController@index')->name('upload-attachment');
+Route::get('/uploads/upload-attachment', $controller_path . '\uploads\UploadController@upload_view')->name('upload-attachment');
+Route::get('/uploads/', $controller_path . '\uploads\UploadController@index')->name('manage-uploads');
+Route::post('/upload/upload', $controller_path . '\uploads\UploadController@upload')->name('upload-upload');
+Route::get('/upload/get-uploads', $controller_path . '\uploads\UploadController@get_uploads')->name('get-upload');
