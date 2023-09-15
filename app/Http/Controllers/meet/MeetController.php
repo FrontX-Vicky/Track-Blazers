@@ -56,8 +56,8 @@ class MeetController extends Controller
      $counter = 30001;
 
     //  echo storage_path().'/app/'.$file->path;
-    //  $file_path = storage_path().'/app/'.$file->path;
-     $file_path = "C:/xampp/htdocs/tb-admin/storage/app/".$file->path;
+     $file_path = storage_path().'/app/'.$file->path;exit;
+    //  $file_path = "C:/xampp/htdocs/tb-admin/storage/app/".$file->path;
      if(($open = fopen($file_path, 'r')) !== FALSE){
          while(($row = fgetcsv($open)) !== FALSE){
           // $athletes[] = $row;
