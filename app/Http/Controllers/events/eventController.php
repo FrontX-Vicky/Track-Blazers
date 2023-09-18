@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Meets;
 use App\Models\Events;
+use App\Models\round; 
 
 class EventController extends Controller
 {
@@ -14,6 +15,10 @@ class EventController extends Controller
     $events = Events::simplePaginate(10);
     return view('content.events.manage-event',['data' => $events]);
   }
+  // {
+  //   $round = round()::simplePaginate(10);
+  //   return view('content.events.rounds',['data' => $round]);
+  // }
 
   public function createEvent($id = null)
   {
@@ -23,11 +28,11 @@ class EventController extends Controller
     return view('content.events.create-event',$data);
   }
 
-  public function insertEvent(Request $req)
+public function insertEvent(Request $req)
   {
-    dd($req);
-    // $events_data = unserialize($req);
-    print_r($events_data);exit;
+    // dd($req);
+    $events_data = unserialize($req);
+    // print_r($events_data);exit;
     // return view('content.meet.createmeet');
     $events = new Events;
     $events->event_id	 = $req['event-id'];
@@ -61,7 +66,16 @@ class EventController extends Controller
     $events->created_at = date("Y-m-d h:i:s");
     $events->save();
   }
-
+  public function insertRounds(Request $req)
+  {
+    $rounds_data = serialize($req);
+      $rounds = new round;
+      $rounds->event_id = $req['event-id'];
+      $rounds->round_name = $req['roundName'];
+      $rounds->date = $req['currentDate'];
+      $rounds->time = $req['defaultTime'];
+      $rounds->save();
+  }
 
 
 

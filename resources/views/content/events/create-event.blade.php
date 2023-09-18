@@ -315,9 +315,17 @@
                     roundTableBody.innerHTML = '';
 
                     for (let i = 1; i <= numRounds; i++) {
-                        const roundName = i <= roundNames.length ? roundNames[i - 1] : "Round " + i;
-                        const currentDate = new Date().toISOString().split("T")[0];
-                        const defaultTime = i === 1 ? "08:00" : addHours("08:00", i - 1);
+                        // const roundName = i <= roundNames.length ? roundNames[i - 1] : "Round " + i;
+                        // const currentDate = new Date().toISOString().split("T")[0];
+                        // let defaultTime = "08:00";
+                        for (let i = 1; i <= numRounds; i++) {
+                            const roundName = i <= roundNames.length ? roundNames[i - 1] : "Round " + i;
+                            const currentDate = new Date().toISOString().split("T")[0];
+                            const defaultTime = i === 1 ? "08:00" : addHours("08:00", i - 1);
+
+                        if (i === numRounds) {
+                            roundName = "Final";
+                        }
 
                         var roundInfo = {
                             roundNumber: i,
@@ -357,28 +365,27 @@
                     if (validateInputFields()) {
                         var fd = new FormData();
                         // console.log(fd);
-                        // var formData = $('#event_form').serialize();
-                        // roundInfoArray.forEach(function(roundInfo) {
+                        var formData = $('#event_form').serialize();
+                        roundInfoArray.forEach(function(roundInfo) {
                             fd.append("round", JSON.stringify(roundInfoArray))
-                        // formData.push({
-                        //     name: 'round',
-
-                        //     value: roundInfoArray
-                        // });
-                        // });
-                        // console.log(formData);
-                        $.ajax({
-                            url: '/event/insert-event',
-                            type: 'POST',
-                            ContentType: "application/json",
-                            data: fd,
-                            success: function(result) {
-                                if (result.status = 1) {
-                                    $('#tbody').html(result);
-                                }
-                            },
-                            error: function(jqXhr, textStatus, errorMessage) {}
+                        formData.push({
+                            name: 'round',
+                            value: roundInfoArray
                         });
+                        });
+                        // // console.log(formData);
+                        // $.ajax({
+                        //     url: '/event/insert-event',
+                        //     type: 'POST',
+                        //     ContentType: "application/json",
+                        //     data: fd,
+                        //     success: function(result) {
+                        //         if (result.status = 1) {
+                        //             $('#tbody').html(result);
+                        //         }
+                        //     },
+                        //     error: function(jqXhr, textStatus, errorMessage) {}
+                        // });
                     }
                 });
 
