@@ -65,6 +65,26 @@
           "slug": ""
         }
       ]
+    },
+    {
+      "menuHeader": "Batches"
+    },
+    {
+      "name": "Batches",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "slug": "layouts",
+      "submenu": [
+        {
+          "url": "/uploads/",
+          "name": "Manage Batches",
+          "slug": "layouts-without-menu"
+        },
+        {
+          "url": "/uploads/upload-attachment",
+          "name": "upload Batch",
+          "slug": ""
+        }
+      ]
     }
   ]
 }
