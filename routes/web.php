@@ -83,6 +83,7 @@ Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tab
 Route::get('/test/test', $controller_path . '\test\testController@index')->name('form-layouts-create-event');
 
 // Events
+Route::get('/events', $controller_path . '\events\EventController@index')->name('events');
 Route::get('/event/create-event/{id?}', $controller_path . '\events\eventController@createEvent')->name('create-event');
 Route::post('/event/insert-event', $controller_path . '\events\eventController@insertEvent')->name('insert-event');
 

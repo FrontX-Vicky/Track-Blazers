@@ -35,7 +35,7 @@
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/event",
+          "url": "/events",
           "name": "Manage Events",
           "slug": "layouts-without-menu"
         },
