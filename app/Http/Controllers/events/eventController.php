@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Meets;
 use App\Models\Events;
-use App\Models\round; 
+use App\Models\round;
 
 class EventController extends Controller
 {
@@ -30,45 +30,41 @@ class EventController extends Controller
 
 public function insertEvent(Request $req)
   {
-    // dd($req);
-    $events_data = unserialize($req);
-    // print_r($events_data);exit;
-    // return view('content.meet.createmeet');
+    // dd($req->all());
+    // $events_data = unserialize($req);
     $events = new Events;
-    $events->event_id	 = $req['event-id'];
-    $events->event_name = $req['event-name'];
+    $events->event_id	 = $req['event_id'];
+    $events->meet_id	 = $req['meet_id'];
+    $events->name = $req['event_name'];
     $events->gender	 = $req['gender'];
-    $events->event_type = $req['event-type'];
-    $events->relay = isset($req['relay']) ? $req['relay']: '0';
-    $events->distance = $req['distance'];
-    $events->member_count = $req['members'];
-    $events->entries	 = $req['entries'];
-    $events->result = $req['results'];
-    $events->lane_count	= $req['no-Positions'];
-    $events->position_assigment	 = $req['lane-assignment'];
-    $events->flight_assigment = $req['heat-assignment'];
-    $events->flight_order = $req['heat-order'];
+    $events->event_type = $req['event_type'];
+    $events->no_positions	= $req['no_positions'];
+    $events->position_assigment	 = $req['position_assigment'];
+    $events->flight_assigment = $req['flight_assigment'];
+    $events->flight_order = $req['flight_order'];
     $events->advancement	 = $req['advancement'];
-    $events->scoring = isset($req['score-event']) ? $req['score-event']: '0';
-    $events->mode = $req["lane-assignment-wind"];
-    $events->start = $req["start-wind"];
-    $events->duration = $req["duration-wind"];
+    $events->member_count = $req['members'];
+    $events->scoring = isset($req['score_event']) ? $req['score_event']: '0';
+    $events->entries_unit	 = $req['entries_unit'];
+    $events->result_unit = $req['result_unit'];
+
+    // $events->relay = isset($req['relay']) ? $req['relay']: '0';
+    // $events->distance = $req['distance'];
+    // $events->mode = $req["lane-assignment-wind"];
+    // $events->start = $req["start-wind"];
+    // $events->duration = $req["duration-wind"];
     $events->modified_by = "1";
-    
-    // $events->to_date = $req['lane-assignment-wind'];
-    // $events->to_date = $req['start-wind'];
-    // $events->to_date = $req['duration-wind'];
-    // $events->to_date = $req['event-type'];
-    // $events->to_date = $req['total-laps'];
-    // $events->to_date = $req['laps-per-split'];
-    // $events->to_date = $req['too-fast-time'];
-    // $events->to_date = $req['too-slow-time']; 
     $events->created_at = date("Y-m-d h:i:s");
     $events->save();
+
+    // echo $events->id;
+    // if($events){
+
+    // }
   }
   public function insertRounds(Request $req)
   {
-    $rounds_data = serialize($req);
+      $rounds_data = serialize($req);
       $rounds = new round;
       $rounds->event_id = $req['event-id'];
       $rounds->round_name = $req['roundName'];
