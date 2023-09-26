@@ -61,6 +61,8 @@ public function insertEvent(Request $req)
     // if($events){
 
     // }
+    $response = ['data' => '', "status" => 1, "msg" => 'Succcess!'];
+    return $response;
   }
   public function insertRounds(Request $req)
   {

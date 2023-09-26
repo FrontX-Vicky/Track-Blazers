@@ -358,8 +358,9 @@
                 , type: 'POST'
                 , data: fd
                 , success: function(result) {
-                    if (result.status = 1) {
-                        $('#tbody').html(result);
+                  console.log(result);
+                    if (result.status == '1') {
+                      window.location.replace('/events')
                     }
                 }
                 , error: function(jqXhr, textStatus, errorMessage) {}
