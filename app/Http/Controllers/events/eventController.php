@@ -25,7 +25,7 @@ class EventController extends Controller
     $meets = Meets::all();
     $data['data']['meets'] = compact('meets');
     $data['data']['id'] = $id;
-    return view('content.events.create-event',$data);
+    return view('content.events.create-event',$data); 
   }
 
 public function insertEvent(Request $req)
