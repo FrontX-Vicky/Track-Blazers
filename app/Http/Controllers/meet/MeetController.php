@@ -109,4 +109,8 @@ class MeetController extends Controller
     return $random_password;
   }
 
+  public function setGlobalMeet(Request $req){
+      $meet_id =  $req->all()['id'];
+      $req->session()->put('meet_id', $meet_id);
+  }
 }
