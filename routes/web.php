@@ -82,6 +82,7 @@ Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tab
 //new
 Route::get('/test/test', $controller_path . '\test\testController@index')->name('form-layouts-create-event');
 
+
 // Events
 Route::get('/events', $controller_path . '\events\EventController@index')->name('events');
 Route::get('/event/create-event/{id?}', $controller_path . '\events\eventController@createEvent')->name('create-event');
@@ -102,7 +103,7 @@ Route::get('/athlete/create-athlete', $controller_path . '\athlete\AthleteContro
 Route::post('/athlete/insert-athlete', $controller_path . '\athlete\AthleteController@insertAthlete')->name('create-athlete');
 
 //score panel
-Route::get('/score/', $controller_path . '\score\ScoreController@index')->name('show-score-panel');
+Route::get('/score', $controller_path . '\score\ScoreController@index')->name('show-score-panel');
 Route::post('/score/score-panel', $controller_path . '\score\ScoreController@showScorepanel')->name('show-score-panel');
 Route::post('/score/update-score', $controller_path . '\score\ScoreController@updateScore')->name('update-score');
 

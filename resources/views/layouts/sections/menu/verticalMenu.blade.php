@@ -14,6 +14,42 @@
     </a>
   </div>
 
+
+    <div class="m-3">
+      <label class="form-label" for="entries_unit">Meets</label>
+        <select class="form-select form-select-sm" id="meet_id" name="meet_id" required=""
+        {{-- value="{{ $data['id'] }}" @php if($data['id'] !=null) echo "readonly" ; @endphp --}}
+        >
+
+            <option value="">Select</option>
+            @foreach ($meetData[0] as $meet)
+            {{-- @php
+              print_r($meet);
+            @endphp --}}
+            <option value="{{ $meet['id'] }}"
+              {{-- @php if($meet->id == $data['id']) echo "selected"; @endphp --}}
+              >{{ $meet['name']}}</option>
+            @endforeach
+        </select>
+    </div>
+
+  <script>
+    var meetDropdown = document.getElementById('meet_id');
+    meetDropdown.addEventListener('click', function(event) {
+        $.ajax({
+            url: "/event/insert-event"
+            , type: 'POST'
+            , data: {id : event.target.value }
+            , success: function(result) {
+              console.log(result);
+                if (result.status == '1') {
+                  window.location.replace('/events')
+                }
+            }
+            , error: function(jqXhr, textStatus, errorMessage) {}
+        });
+    });
+  </script>
   <div class="menu-inner-shadow"></div>
 
   <ul class="menu-inner py-1">

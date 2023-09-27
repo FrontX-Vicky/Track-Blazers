@@ -3,15 +3,13 @@
     {
       "url": "/",
       "name": "Dashboard",
-      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "icon": "menu-icon tf-icons",
       "slug": "dashboard-analytics"
     },
-    {
-      "menuHeader": "Meets"
-    },
+
     {
       "name": "Meets",
-      "icon": "menu-icon tf-icons bx bx-layout",
+      "icon": "menu-icon tf-icons bx bxs-calendar-star",
       "slug": "layouts",
       "submenu": [
         {
@@ -26,12 +24,10 @@
         }
       ]
     },
-    {
-      "menuHeader": "Events"
-    },
+
     {
       "name": "Events",
-      "icon": "menu-icon tf-icons bx bx-layout",
+      "icon": "menu-icon tf-icons bx bxs-calendar-event",
       "slug": "layouts",
       "submenu": [
         {
@@ -46,17 +42,15 @@
         }
       ]
     },
-    {
-      "menuHeader": "Athlets"
-    },
+
     {
       "name": "Athlets",
-      "icon": "menu-icon tf-icons bx bx-layout",
+      "icon": "menu-icon tf-icons bx bx-run",
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/athlete/event",
-          "name": "Manage Events",
+          "url": "/athletes",
+          "name": "Manage Athletes",
           "slug": "layouts-without-menu"
         },
         {
@@ -66,9 +60,7 @@
         }
       ]
     },
-    {
-      "menuHeader": "Batches"
-    },
+
     {
       "name": "Batches",
       "icon": "menu-icon tf-icons bx bx-layout",
@@ -83,6 +75,19 @@
           "url": "/uploads/upload-attachment",
           "name": "upload Batch",
           "slug": ""
+        }
+      ]
+    },
+
+    {
+      "name": "Scores",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "slug": "layouts",
+      "submenu": [
+        {
+          "url": "/scores",
+          "name": "Score Panel",
+          "slug": "layouts-without-menu"
         }
       ]
     }

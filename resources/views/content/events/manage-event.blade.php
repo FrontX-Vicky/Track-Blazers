@@ -106,7 +106,7 @@ $counter++;
                 <tr>
                     <td class="">{{$counter}}</td>
                     <td><strong>{{$events->event_id}}</strong></td>
-                    <td>{{$events->event_name}}</td>
+                    <td>{{$events->name}}</td>
                     <td>{{$events->gender}}</td>
                     <td>{{$events->event_type}}</td>
                     <td>{{$events->relay}}</td>
@@ -123,7 +123,7 @@ $counter++;
                     <td>{{$events->mode}}</td>
                     <td>{{$events->start}}</td>
                     <td>{{$events->duration}}</td>
-                    
+
                     <td><span class="badge bg-label-primary me-1">Active</span></td>
                     <td>
                         <div class="dropdown">

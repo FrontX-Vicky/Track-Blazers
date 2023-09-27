@@ -76,11 +76,12 @@ $counter++;
             <thead>
                 <tr>
                     <th>Sr. No.</th>
+                    <th>Athlete UID</th>
                     <th>Name</th>
-                    <th>Location</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Status</th>
+                    <th>Gender</th>
+                    <th>Affiliation</th>
+                    {{-- <th>End Date</th> --}}
+                    {{-- <th>Status</th> --}}
                     <th>Action</th>
                 </tr>
             </thead>
@@ -88,20 +89,22 @@ $counter++;
                 @php
                 $counter = 1;
                 @endphp
-                @foreach ( $data as $meet)
+                @foreach ( $data as $athlete)
                 <tr>
                     <td class="">{{$counter}}</td>
-                    <td><strong>{{$meet->name}}</strong></td>
-                    <td>{{$meet->location}}</td>
-                    <td>{{date('d M Y',strtotime($meet->from_date))}}</td>
-                    <td>{{date('d M Y',strtotime($meet->to_date))}}</td>
+                    <td class="">{{$athlete->athlete_uid}}</td>
+                    <td><strong>{{$athlete->fname}} {{$athlete->lname}}</strong></td>
+                    <td>{{$athlete->gender}}</td>
+                    <td>{{$athlete->affiliation}}</td>
+                    {{-- <td>{{date('d M Y',strtotime($athlete->from_date))}}</td>
+                    <td>{{date('d M Y',strtotime($athlete->to_date))}}</td> --}}
 
-                    <td><span class="badge bg-label-primary me-1">Active</span></td>
+                    {{-- <td><span class="badge bg-label-primary me-1">Active</span></td> --}}
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{route('create-event', $meet->id)}}"><i class="bx bx-plus me-1"></i> Add Event</a>
+                                {{-- <a class="dropdown-item" href="{{route('create-event', $athlete->id)}}"><i class="bx bx-plus me-1"></i> Add Event</a> --}}
                                 <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                 <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                             </div>

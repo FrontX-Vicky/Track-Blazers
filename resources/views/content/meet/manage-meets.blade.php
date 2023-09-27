@@ -32,6 +32,8 @@ $containerNav = 'container-xxl';
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Status</th>
+                    <th>Login ID</th>
+                    <th>Password</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -47,7 +49,9 @@ $containerNav = 'container-xxl';
                     <td>{{date('d M Y',strtotime($meet->from_date))}}</td>
                     <td>{{date('d M Y',strtotime($meet->to_date))}}</td>
 
-                    <td><span class="badge bg-label-primary me-1">Active</span></td>
+                    <td><span class="badge bg-label-warning me-1">Upcomming</span></td>
+                    <td>{{$meet->meet_login_id}}</td>
+                    <td>{{$meet->password}}</td>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
