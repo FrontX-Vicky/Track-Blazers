@@ -19,17 +19,15 @@
       <label class="form-label" for="entries_unit">Meets</label>
         <select class="form-select form-select-sm" id="meet_id" name="meet_id" required=""
         >
-
-            <option value="">Select</option>
+            <option value="">All</option>
             @foreach ($meetData[0] as $meet)
             <option value="{{ $meet['id'] }}"
-               {{ (isset(session()->all()['meet_id']) && (session()->all()['meet_id'] == $meet['id'])) ? 'selected' : '' }}>{{ $meet['name']}}</option>
+               {{ (isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id']) && (session()->all()['meet_id'] == $meet['id'])) ? 'selected' : '' }}>{{ $meet['name']}}</option>
             @endforeach
         </select>
     </div>
 
   <script>
-
     var meetDropdown = document.getElementById('meet_id');
     meetDropdown.addEventListener('change', function(event) {
         $.ajax({

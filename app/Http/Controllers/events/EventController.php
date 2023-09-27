@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\events;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advancement;
+use App\Models\Distance_master;
+use App\Models\Event_type;
 use Illuminate\Http\Request;
 use App\Models\Meets;
 use App\Models\Events;
+use App\Models\Flight_order;
+use App\Models\Gender;
+use App\Models\Measurement_system;
+use App\Models\Position_assignment;
 use App\Models\round;
 
 class EventController extends Controller
@@ -23,9 +30,17 @@ class EventController extends Controller
   public function createEvent($id = null)
   {
     $meets = Meets::all();
-    $data['data']['meets'] = compact('meets');
-    $data['data']['id'] = $id;
-    return view('content.events.create-event',$data); 
+    $advancement = Advancement::all();
+    $distance_master = Distance_master::all();
+    $event_type = Event_type::all();
+    $flight_orders = Flight_order::all();
+    $gender = Gender::all();
+    $measurement_system = Measurement_system::all();
+    $position_assignment = Position_assignment::all()->where('hide', '<>', '1');
+
+    $data['data'] = compact('meets' , 'advancement', 'distance_master', 'event_type', 'flight_orders', 'gender', 'measurement_system', 'position_assignment');
+    $data['data']['meet_id'] = $id;
+    return view('content.events.create-event',$data);
   }
 
 public function insertEvent(Request $req)

@@ -10,7 +10,7 @@
     {
       "name": "Meets",
       "icon": "menu-icon tf-icons bx bxs-calendar-star",
-      "slug": "layouts",
+      "slug": "create",
       "submenu": [
         {
           "url": "/meet",
@@ -20,7 +20,7 @@
         {
           "url": "/meet/create-meet",
           "name": "Create Meet",
-          "slug": ""
+          "slug": "create-meet"
         }
       ]
     },

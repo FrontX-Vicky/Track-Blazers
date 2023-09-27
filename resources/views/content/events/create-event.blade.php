@@ -18,10 +18,10 @@
                     <div class="mb-2">
 
                         {{-- <label class="form-label" for="distance">Distance:</label> --}}
-                        <select class="form-select form-select-sm" id="meet_id" name="meet_id" required="" value="{{ $data['id'] }}" @php if($data['id'] !=null) echo "readonly" ; @endphp>
+                        <select class="form-select form-select-sm" id="meet_id" name="meet_id" required="" value="{{ $data['meet_id'] }}" @php if($data['meet_id'] !=null) echo "readonly" ; @endphp>
                             <option value="">Select</option>
-                            @foreach ($data['meets']['meets'] as $meet)
-                            <option value="{{ $meet->id }}" @php if($meet->id == $data['id']) echo "selected"; @endphp>{{ $meet->name}}</option>
+                            @foreach ($data['meets'] as $meet)
+                            <option value="{{ $meet->id }}" @php if($meet->id == $data['meet_id']) echo "selected"; @endphp>{{ $meet->name}}</option>
                             @endforeach
 
                         </select>
@@ -41,9 +41,9 @@
                         <label class="form-label" for="gender">Gender</label>
                         <select class="form-select form-select-sm" id="gender" name="gender" required>
                             <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Mixed">Mixed</option>
+                            @foreach ($data['gender'] as $gender)
+                            <option value="{{ $gender->id }}">{{ $gender->gender}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-2">
@@ -51,15 +51,9 @@
                         <select class="form-select form-select-sm" id="event_type" name="event_type" required>
                             <option value="">Select</option>
                             <option value="0">Others</option>
-                            <option value="1" selected>Long Jump</option>
-                            <option value="2">Triple Jump</option>
-                            <option value="3">Shot Put</option>
-                            <option value="4">Discus Throw</option>
-                            <option value="5">Hammer Throw</option>
-                            <option value="6">Javelin Throw</option>
-                            <option value="7">High Jump</option>
-                            <option value="8">Pole Valut</option>
-                            <option value="9" disabled>Track</option>
+                            @foreach ($data['event_type'] as $event_type)
+                            <option value="{{ $event_type->id }}">{{ $event_type->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-2">
@@ -90,9 +84,9 @@
                     <div class="mb-2">
                         <label class="form-label" for="position_assigment">Lane/Position Assignment:</label>
                         <select class="form-select form-select-sm" id="position_assigment" name="position_assigment" required="">
-                            <option value="1" selected>Worst to Best</option>
-                            <option value="2">Best To Worst</option>
-                            <option value="3">Random</option>
+                            @foreach ($data['position_assignment'] as $position_assignment)
+                              <option value="{{ $position_assignment->id }}">{{ $position_assignment->orders}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-2">
@@ -105,9 +99,9 @@
                     <div class="mb-2">
                         <label class="form-label" for="flight_order">Heat/Flight order</label>
                         <select class="form-select form-select-sm" id="flight_order" name="flight_order" required="">
-                            <option value="1" selected>Worst to Best</option>
-                            <option value="2">Best To Worst</option>
-                            <option value="3">Random</option>
+                          @foreach ($data['flight_orders'] as $flight_orders)
+                            <option value="{{ $flight_orders->id }}">{{ $flight_orders->orders}}</option>
+                          @endforeach
                         </select>
                     </div>
                     <div class="mb-2">
