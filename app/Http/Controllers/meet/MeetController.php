@@ -112,5 +112,6 @@ class MeetController extends Controller
   public function setGlobalMeet(Request $req){
       $meet_id =  $req->all()['id'];
       $req->session()->put('meet_id', $meet_id);
+      return json_encode(['data' =>  $meet_id, 'status'=>1, 'msg'=> 'Meet id set successfully!']);
   }
 }

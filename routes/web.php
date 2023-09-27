@@ -94,7 +94,7 @@ Route::get('/meet/create-meet', $controller_path . '\meet\MeetController@createM
 Route::post('/meet/insert-meet', $controller_path . '\meet\MeetController@insertMeet')->name('insert-meet');
 Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->name('get-meet');
 Route::post('/meet/insert-athletes', $controller_path . '\meet\MeetController@insertAthletes')->name('insert-athletes');
-Route::post('/meet/set-global-meet', $controller_path . '\meet\MeetController@setGlobalMeet')->name('set-meet');
+Route::post('/meet/set-global-meet', $controller_path . '\meet\MeetController@setGlobalMeet')->name('meet-set');
 
 
 
