@@ -85,8 +85,8 @@ Route::get('/test/test', $controller_path . '\test\testController@index')->name(
 
 // Events
 Route::get('/events', $controller_path . '\events\EventController@index')->name('events');
-Route::get('/event/create-event/{id?}', $controller_path . '\events\eventController@createEvent')->name('create-event');
-Route::post('/event/insert-event', $controller_path . '\events\eventController@insertEvent')->name('insert-event');
+Route::get('/event/create-event/{id?}', $controller_path . '\events\EventController@createEvent')->name('create-event');
+Route::post('/event/insert-event', $controller_path . '\events\EventController@insertEvent')->name('insert-event');
 
 // Meets
 Route::get('/meet', $controller_path . '\meet\MeetController@index')->name('meets');
