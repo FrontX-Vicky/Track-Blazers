@@ -13,7 +13,7 @@ use App\Models\Flight_order;
 use App\Models\Gender;
 use App\Models\Measurement_system;
 use App\Models\Position_assignment;
-use App\Models\round;
+use App\Models\Rounds;
 
 class EventController extends Controller
 {
@@ -54,8 +54,8 @@ public function insertEvent(Request $req)
     $events->gender	 = $req['gender'];
     $events->event_type = $req['event_type'];
     $events->no_positions	= $req['no_positions'];
-    $events->position_assigment	 = $req['position_assigment'];
-    $events->flight_assigment = $req['flight_assigment'];
+    $events->position_assignment	 = $req['position_assignment'];
+    $events->flight_assignment = $req['flight_assignment'];
     $events->flight_order = $req['flight_order'];
     $events->advancement	 = $req['advancement'];
     $events->member_count = $req['members'];
@@ -68,9 +68,19 @@ public function insertEvent(Request $req)
     // $events->mode = $req["lane-assignment-wind"];
     // $events->start = $req["start-wind"];
     // $events->duration = $req["duration-wind"];
+
     $events->modified_by = "1";
     $events->created_at = date("Y-m-d h:i:s");
     $events->save();
+
+    foreach($req['round_id'] as $key => $val){
+      $event_id = $events->id;
+      $round_no = $val;
+      $round_name =  $req['round_name'][$key];
+      $round_date =  $req['round_date'][$key];
+      $round_time =  $req['round_time'][$key];
+      $this->insertRound($event_id, $round_no, $round_name, $round_date, $round_time);
+    }
 
     // echo $events->id;
     // if($events){
@@ -79,14 +89,14 @@ public function insertEvent(Request $req)
     $response = ['data' => '', "status" => 1, "msg" => 'Succcess!'];
     return $response;
   }
-  public function insertRounds(Request $req)
+  public function insertRound($event_id, $round_no, $round_name, $round_date, $round_time)
   {
-      $rounds_data = serialize($req);
-      $rounds = new round;
-      $rounds->event_id = $req['event-id'];
-      $rounds->round_name = $req['roundName'];
-      $rounds->date = $req['currentDate'];
-      $rounds->time = $req['defaultTime'];
+      $rounds = new Rounds();
+      $rounds->event_row_id = $event_id;
+      $rounds->round_no = $round_no;
+      $rounds->name = $round_name;
+      $rounds->date = $round_date;
+      $rounds->time = $round_time;
       $rounds->save();
   }
 
