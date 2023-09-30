@@ -35,7 +35,8 @@
             , type: 'POST'
             , data: {id : event.target.value }
             , success: function(result) {
-              console.log(result);
+              // console.log(result);
+              location.reload();
             }
             , error: function(jqXhr, textStatus, errorMessage) {}
         });

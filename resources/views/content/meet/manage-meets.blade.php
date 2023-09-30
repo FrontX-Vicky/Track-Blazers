@@ -116,13 +116,6 @@ $containerNav = 'container-xxl';
 
 <script>
     var meet_id = '';
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    });
 
     function getData(element = '') {
         meet_id = element.getAttribute('data-id');

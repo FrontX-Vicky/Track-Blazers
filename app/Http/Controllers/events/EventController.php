@@ -63,7 +63,13 @@ class EventController extends Controller
   // ->simplePaginate(5);
 
 
-    $events = Events_view::simplePaginate(10);
+    // $events = Events_view::where('meet_id' , '=', session()->all()['meet_id'])->simplePaginate(10);
+
+    if(isset(session()->all()['meet_id'])){
+       $events = Events_view::where('meet_id' , '=', session()->all()['meet_id'])->simplePaginate(10);
+    }else{
+       $events = Events_view::simplePaginate(10);
+    }
     return view('content.events.manage-event',['data' => $events]);
   }
   // {
@@ -143,8 +149,4 @@ public function insertEvent(Request $req)
       $rounds->time = $round_time;
       $rounds->save();
   }
-
-
-
-
 }
