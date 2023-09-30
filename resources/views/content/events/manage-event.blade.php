@@ -73,29 +73,32 @@ $counter++;
 <div class="card">
     <h5 class="card-header">Events</h5>
     <div class="table-responsive text-nowrap">
-        <table class="table">
+        <table class="table text-center">
             <thead>
                 <tr>
                     <th>Sr. No.</th>
-                    <th>EventId</th>
+                    <th>Event ID</th>
                     <th>Event Name</th>
-                    <th>Gender</th>
                     <th>Event Type </th>
-                    <th>Distance</th>
+                    <th>Gender</th>
+                    {{-- <th>Distance</th> --}}
                     <th>Member Count</th>
-                    <th>Entries</th>
-                    <th>Result</th>
+                    {{-- <th>Entries</th> --}}
+                    {{-- <th>Result</th> --}}
                     <th>Number of Positions</th>
                     <th>Lane/Position Assignment</th>
                     <th>Heat/Flight Assignment</th>
                     <th>Heat/Flight order</th>
                     <th>Advancement</th>
-                    <th>Number of Members</th>
-                    <th>Entries</th>
-                    <th>Results</th>
-                    <th>mode</th>
+
+                    {{-- <th>Number of Members</th> --}}
+                    {{-- <th>Entries</th> --}}
+                    {{-- <th>Results</th> --}}
+                    {{-- <th>mode</th> --}}
                     <th>start</th>
                     <th>duration</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -107,20 +110,23 @@ $counter++;
                     <td class="">{{$counter}}</td>
                     <td><strong>{{$events->event_id}}</strong></td>
                     <td>{{$events->name}}</td>
-                    <td>{{$events->gender}}</td>
                     <td>{{$events->event_type}}</td>
-                    <td>{{$events->relay}}</td>
-                    <td>{{$events->distance}}</td>
+                    <td>{{$events->gender}}</td>
+                    {{-- <td>{{$events->relay}}</td> --}}
+                    {{-- <td>{{$events->distance}}</td> --}}
                     <td>{{$events->member_count}}</td>
-                    <td>{{$events->entries}}</td>
-                    <td>{{$events->result}}</td>
-                    <td>{{$events->lane_count}}</td>
-                    <td>{{$events->position_assigment}}</td>
-                    <td>{{$events->flight_assigment}}</td>
+                    {{-- <td>{{$events->entries}}</td> --}}
+                    {{-- <td>{{$events->result}}</td> --}}
+                    <td>{{$events->no_positions}}</td>
+                    <td>{{$events->position_assignment}}</td>
+                    <td>{{$events->flight_assignment}}</td>
                     <td>{{$events->flight_order}}</td>
                     <td>{{$events->advancement}}</td>
-                    <td>{{$events->scoring}}</td>
-                    <td>{{$events->mode}}</td>
+
+
+                    {{-- <td>{{$events->lane_count}}</td> --}}
+                    {{-- <td>{{$events->scoring}}</td> --}}
+                    {{-- <td>{{$events->mode}}</td> --}}
                     <td>{{$events->start}}</td>
                     <td>{{$events->duration}}</td>
 

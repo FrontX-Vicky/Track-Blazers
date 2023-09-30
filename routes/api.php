@@ -23,7 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/authenticat_meet', function(Request $req){
   $request = $req->all();
-  $meet = Meets::where('meet_login_id', '=',  $request['meet_login_id'])->where('password', '=',  $request['password'])->get();
+  // $meet = Meets::where('meet_login_id', '=',  $request['meet_login_id'])->where('password', '=',  $request['password'])->get();
+  $meet = Meets::where('meet_login_id', '=',  $request['meet_login_id'])->get();
   return $meet;
 });
 

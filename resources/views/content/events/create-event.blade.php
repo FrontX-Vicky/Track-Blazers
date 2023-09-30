@@ -82,16 +82,16 @@
                         <input type="number" class="form-control form-control-sm" id="no_positions" value="8" name="no_positions" required="">
                     </div>
                     <div class="mb-2">
-                        <label class="form-label" for="position_assigment">Lane/Position Assignment:</label>
-                        <select class="form-select form-select-sm" id="position_assigment" name="position_assigment" required="">
+                        <label class="form-label" for="position_assignment">Lane/Position Assignment:</label>
+                        <select class="form-select form-select-sm" id="position_assignment" name="position_assignment" required="">
                             @foreach ($data['position_assignment'] as $position_assignment)
                               <option value="{{ $position_assignment->id }}">{{ $position_assignment->orders}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-2">
-                        <label class="form-label" for="flight_assigment">Heat/Flight Assignment:</label>
-                        <select class="form-select form-select-sm" id="flight_assigment" name="flight_assigment" required="">
+                        <label class="form-label" for="flight_assignment">Heat/Flight Assignment:</label>
+                        <select class="form-select form-select-sm" id="flight_assignment" name="flight_assignment" required="">
                             <option value="1">Seed Mark</option>
                             <option value="2" selected>Random</option>
                         </select>
@@ -157,7 +157,7 @@
                     <legend class="float-none w-auto px-3 fs-5">Relays</legend>
                     <div class="mb-2">
                         <label class="form-label" for="members">Number of Members:</label>
-                        <input class="form-control form-control-sm" id="members" name="members" value="4" readonly>
+                        <input class="form-control form-control-sm" id="members" name="members" value="" readonly>
                     </div>
                 </fieldset>
 

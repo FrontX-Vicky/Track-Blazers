@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('result_unit');
             $table->string('lane_count');
             $table->string('lane_position');
-            $table->string('flight_assigment');
+            $table->string('flight_assignment');
             $table->string('flight_order');
             $table->string('advancement');
             $table->string('mode');
