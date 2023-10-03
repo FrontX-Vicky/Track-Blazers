@@ -77,7 +77,7 @@ class MeetController extends Controller
           if(array_key_exists($row[5], $events_arr)){
             $event = $events_arr[$row[5]];
             if($gender_arr[$event['gender']] ==  $row[3]){
-              $meet = Athletes::where('meet_id'$data['meet_id']);
+              $meet = Athletes::where('meet_id', "=", $data['meet_id']);
               $athlete = new Athletes;
               $athlete->athlete_uid = $row[0];
               $athlete->fname = $row[2];
