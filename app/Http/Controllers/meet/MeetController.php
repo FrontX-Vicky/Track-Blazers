@@ -8,6 +8,7 @@ use App\Models\Events;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Meets;
+use App\Models\Scoretable;
 use App\Models\Uploads;
 
 class MeetController extends Controller
@@ -77,7 +78,7 @@ class MeetController extends Controller
           if(array_key_exists($row[5], $events_arr)){
             $event = $events_arr[$row[5]];
             if($gender_arr[$event['gender']] ==  $row[3]){
-              $meet = Athletes::where('meet_id', "=", $data['meet_id']);
+              // $meet = Athletes::where('meet_id', "=", $data['meet_id']);
               $athlete = new Athletes;
               $athlete->athlete_uid = $row[0];
               $athlete->fname = $row[2];
@@ -92,6 +93,14 @@ class MeetController extends Controller
               // echo $athlete;exit;
               $athlete->save();
               // $counter++;
+              // echo $athlete;exit;
+              if($athlete->id){
+                $score_data = new Scoretable;
+                $score_data->athlete_id = $athlete->id;
+                // $score_data->created_by = "48077";
+                // $score_data->created_at = date("Y-m-d h:i:s");
+                $score_data->save();
+              }
             }else{
                $response['data']['gender_missmatch'][$event['name']][] = $row;
             }
