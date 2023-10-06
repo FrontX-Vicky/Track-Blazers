@@ -85,7 +85,7 @@
       "slug": "layouts",
       "submenu": [
         {
-          "url": "/scores",
+          "url": "/score",
           "name": "Score Panel",
           "slug": "layouts-without-menu"
         }

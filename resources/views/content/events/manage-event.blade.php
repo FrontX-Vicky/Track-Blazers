@@ -72,7 +72,7 @@ $counter++;
 </style>
 <div class="card">
     <h5 class="card-header">Events</h5>
-    <div class="table-responsive text-nowrap">
+    <div class="table-responsive text-nowrap" style="min-height: 70vh">
         <table class="table text-center">
             <thead>
                 <tr>

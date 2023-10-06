@@ -4,9 +4,11 @@ namespace App\Http\Controllers\meet;
 
 use App\Http\Controllers\Controller;
 use App\Models\Athletes;
+use App\Models\Events;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Meets;
+use App\Models\Scoretable;
 use App\Models\Uploads;
 
 class MeetController extends Controller
@@ -55,34 +57,61 @@ class MeetController extends Controller
   {
      $data = $req->all();
      $meet = Meets::find($data['meet_id']);
+     $events = Events::where('meet_id', '=' ,$data['meet_id'])->get();
+     $eventsArray = $events->toArray();
      $file = Uploads::find($data['file_id']);
-     $athletes = [];
-     $counter = 30001;
+     $response = [];
 
+    $gender_arr = ['O', 'M', 'F'];
+    foreach($eventsArray as $event){
+      $events_arr[$event['event_id']] = $event;
+    }
+    // print_r($events_arr);exit;
+    $gender_missmatch = [];
+    $event_unuvailable = [];
     //  echo storage_path().'/app/'.$file->path;
-     $file_path = storage_path().'/app/'.$file->path;exit;
+     $file_path = storage_path().'/app/'.$file->path;
     //  $file_path = "C:/xampp/htdocs/tb-admin/storage/app/".$file->path;
      if(($open = fopen($file_path, 'r')) !== FALSE){
          while(($row = fgetcsv($open)) !== FALSE){
           // $athletes[] = $row;
-            $athlete = new Athletes;
-            $athlete->athlete_uid = $meet->id.$counter;
-            $athlete->fname = $row[2];
-            $athlete->lname	 = $row[1];
-            $athlete->affiliation	 = $row[4];
-            $athlete->gender = $row[3];
-            $athlete->event_id = $row[5];
-            $athlete->meet_id = $meet->id;
-            $athlete->batch_id = $file->id;
-            $athlete->created_by = "48077";
-            $athlete->created_at = date("Y-m-d h:i:s");
-            // echo $athlete;
-            $athlete->save();
-            $counter++;
-         }
-         fclose($open);
-     }
-     return json_encode($athletes);
+          if(array_key_exists($row[5], $events_arr)){
+            $event = $events_arr[$row[5]];
+            if($gender_arr[$event['gender']] ==  $row[3]){
+              // $meet = Athletes::where('meet_id', "=", $data['meet_id']);
+              $athlete = new Athletes;
+              $athlete->athlete_uid = $row[0];
+              $athlete->fname = $row[2];
+              $athlete->lname	 = $row[1];
+              $athlete->affiliation	 = $row[4];
+              $athlete->gender = $row[3];
+              $athlete->event_id = $row[5];
+              $athlete->meet_id = $meet->id;
+              $athlete->batch_id = $file->id;
+              $athlete->created_by = "48077";
+              $athlete->created_at = date("Y-m-d h:i:s");
+              // echo $athlete;exit;
+              $athlete->save();
+              // $counter++;
+              // echo $athlete;exit;
+              if($athlete->id){
+                $score_data = new Scoretable;
+                $score_data->athlete_id = $athlete->id;
+                // $score_data->created_by = "48077";
+                // $score_data->created_at = date("Y-m-d h:i:s");
+                $score_data->save();
+              }
+            }else{
+               $response['data']['gender_missmatch'][$event['name']][] = $row;
+            }
+          } else {
+              //  $response['data']['event_unuvailable'][$row[5]][] = $row;
+          }
+        }
+      }
+      // $response['data']['events'] = $events_arr;
+      fclose($open);
+     return json_encode($response);
   }
 
   public function generate_login_id(){

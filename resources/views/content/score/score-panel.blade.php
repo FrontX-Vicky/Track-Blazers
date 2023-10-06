@@ -21,6 +21,17 @@
 <!-- Responsive Table -->
 <div class="card">
     <h5 class="card-header">Score Table</h5>
+    <div class="mb-2 mx-5">
+
+        <label class="form-label" for="distance">Event :</label>
+        <select class="form-select form-select" id="event_id" name="event_id" required="" data-value="">
+            <option value="">Select</option>
+            @foreach ($events as $event)
+            <option value="{{ $event->id }}">{{ $event->name}}</option>
+            @endforeach
+
+        </select>
+    </div>
     <div class="table-responsive text-nowrap mx-2 my-5">
         <table class="table table-bordered">
             <thead>
@@ -66,16 +77,30 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $.ajax({
-            url: "/score/score-panel",
-            type: 'POST',
-            success: function(result) {
-                if (result.status = 1) {
-                    $('#tbody').html(result);
+
+        const eventDropdown = document.getElementById('event_id');
+
+        function get_athletes(event_id = '') {
+            $.ajax({
+                url: "/score/score-panel"
+                , type: 'POST',
+                data : {
+                  event_id
                 }
-            },
-            error: function(jqXhr, textStatus, errorMessage) {
-            }
+
+                , success: function(result) {
+                    if (result.status = 1) {
+                        $('#tbody').html(result);
+                    }
+                }
+                , error: function(jqXhr, textStatus, errorMessage) {}
+            });
+        }
+        get_athletes();
+        eventDropdown.addEventListener('change', function(event) {
+            event.preventDefault();
+
+            get_athletes(event.target.value);
         });
     });
 
