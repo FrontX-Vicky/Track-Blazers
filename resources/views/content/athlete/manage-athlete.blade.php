@@ -111,7 +111,7 @@ $counter++;
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                {{-- <a class="dropdown-item" href="{{route('create-event', $athlete->id)}}"><i class="bx bx-plus me-1"></i> Add Event</a> --}}
+                                {{-- <a class="dropdown-item" href="{{route('event-create', $athlete->id)}}"><i class="bx bx-plus me-1"></i> Add Event</a> --}}
                                 <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                 <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                             </div>
@@ -191,7 +191,7 @@ $counter++;
       event.preventDefault();
       var file_id = $('#batchselect').val();
       $.ajax({
-          url: "/meet/insert-athletes",
+          url: "/meet/athlete-inserts",
           type: 'POST',
           data: {
               file_id: file_id,

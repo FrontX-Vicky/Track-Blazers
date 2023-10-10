@@ -10,17 +10,17 @@
     {
       "name": "Meets",
       "icon": "menu-icon tf-icons bx bxs-calendar-star",
-      "slug": "create",
+      "slug": "meet",
       "submenu": [
         {
-          "url": "/meet",
+          "url": "/meets",
           "name": "Manage Meets",
-          "slug": "layouts-without-menu"
+          "slug": "meets"
         },
         {
-          "url": "/meet/create-meet",
+          "url": "/meet/meet-create",
           "name": "Create Meet",
-          "slug": "create-meet"
+          "slug": "meet-create"
         }
       ]
     },
@@ -28,17 +28,17 @@
     {
       "name": "Events",
       "icon": "menu-icon tf-icons bx bxs-calendar-event",
-      "slug": "layouts",
+      "slug": "event",
       "submenu": [
         {
           "url": "/events",
           "name": "Manage Events",
-          "slug": "layouts-without-menu"
+          "slug": "events"
         },
         {
-          "url": "/event/create-event",
+          "url": "/event/event-create",
           "name": "Create Event",
-          "slug": ""
+          "slug": "event-create"
         }
       ]
     },
@@ -54,7 +54,7 @@
           "slug": "layouts-without-menu"
         },
         {
-          "url": "/athlete/create-athlete",
+          "url": "/athlete/athlete-create",
           "name": "Create Athlets",
           "slug": ""
         }

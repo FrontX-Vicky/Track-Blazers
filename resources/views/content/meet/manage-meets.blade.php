@@ -56,14 +56,15 @@ $containerNav = 'container-xxl';
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{route('create-event', $meet->id)}}"><i class="bx bx-plus me-1"></i> Add Event</a>
+                                <a class="dropdown-item" href="{{route('event-create', $meet->id)}}"><i class="bx bx-plus me-1"></i> Add Event</a>
                                 <a class="dropdown-item" href="javascript:void(0);" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="{{$meet->id}}" onclick="getData(this)"><i class="bx bx-plus me-1"></i> Add Batch</a>
                                 <a class="dropdown-item" href="{{route('upload-attachment', $meet->id)}}"><i class="bx bx-upload me-1"></i> Upload Attachment</a>
-                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                <a class="dropdown-item" href="{{route('meet-edit', $meet->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                <a class="dropdown-item" href="{{route('meet-delete', $meet->id)}}"><i class="bx bx-trash me-1"></i> Delete</a>
                             </div>
                         </div>
                     </td>
+
                 </tr>
                 @php
                 $counter++;
@@ -137,7 +138,7 @@ $containerNav = 'container-xxl';
         event.preventDefault();
         var file_id = $('#batchselect').val();
         $.ajax({
-            url: "/meet/insert-athletes",
+            url: "/meet/athlete-inserts",
             type: 'POST',
             data: {
                 file_id: file_id,

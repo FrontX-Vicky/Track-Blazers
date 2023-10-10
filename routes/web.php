@@ -80,28 +80,34 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
 
 //new
-Route::get('/test/test', $controller_path . '\test\testController@index')->name('form-layouts-create-event');
+Route::get('/test/test', $controller_path . '\test\testController@index')->name('form-layouts-event-create');
 
 
 // Events
 Route::get('/events', $controller_path . '\events\EventController@index')->name('events');
-Route::get('/event/create-event/{id?}', $controller_path . '\events\EventController@createEvent')->name('create-event');
-Route::post('/event/insert-event', $controller_path . '\events\EventController@insertEvent')->name('insert-event');
+Route::get('/event/event-create/{id?}', $controller_path . '\events\EventController@createEvent')->name('event-create');
+Route::post('/event/event-insert', $controller_path . '\events\EventController@insertEvent')->name('event-insert');
+Route::get('/event/event-edit/{id?}', $controller_path . '\events\EventController@editEvent')->name('event-edit');
+Route::post('/event/event-update', $controller_path . '\events\EventController@updateEvent')->name('event-update');
+Route::get('/event/event-delete/{id?}', $controller_path . '\events\EventController@deleteEvent')->name('event-delete');
 
 // Meets
-Route::get('/meet', $controller_path . '\meet\MeetController@index')->name('meets');
-Route::get('/meet/create-meet', $controller_path . '\meet\MeetController@createMeet')->name('create-meet');
-Route::post('/meet/insert-meet', $controller_path . '\meet\MeetController@insertMeet')->name('insert-meet');
-Route::get('/meet/getmeet', $controller_path . '\meet\MeetController@getMeet')->name('get-meet');
-Route::post('/meet/insert-athletes', $controller_path . '\meet\MeetController@insertAthletes')->name('insert-athletes');
+Route::get('/meets', $controller_path . '\meet\MeetController@index')->name('meets');
+Route::get('/meet/meet-create', $controller_path . '\meet\MeetController@createMeet')->name('meet-create');
+Route::post('/meet/meet-insert', $controller_path . '\meet\MeetController@insertMeet')->name('meet-insert');
+Route::get('/meet/meet-edit/{id}', $controller_path . '\meet\MeetController@editMeet')->name('meet-edit');
+Route::post('/meet/meet-update', $controller_path . '\meet\MeetController@updateMeet')->name('meet-update');
+Route::get('/meet/meet-delete/{id}', $controller_path . '\meet\MeetController@deleteMeet')->name('meet-delete');
+Route::get('/meet/meet-get', $controller_path . '\meet\MeetController@getMeet')->name('meet-get');
+Route::post('/meet/athletes-insert', $controller_path . '\meet\MeetController@insertAthletes')->name('athletes-insert');
 Route::post('/meet/set-global-meet', $controller_path . '\meet\MeetController@setGlobalMeet')->name('meet-set');
-
-
 
 // Athletes
 Route::get('/athletes', $controller_path . '\athlete\AthleteController@index')->name('athletes');
-Route::get('/athlete/create-athlete', $controller_path . '\athlete\AthleteController@createAthlete')->name('create-athlete');
-Route::post('/athlete/insert-athlete', $controller_path . '\athlete\AthleteController@insertAthlete')->name('create-athlete');
+Route::get('/athlete/athlete-create', $controller_path . '\athlete\AthleteController@createAthlete')->name('athlete-create');
+Route::post('/athlete/athlete-insert', $controller_path . '\athlete\AthleteController@insertAthlete')->name('athlete-insert');
+
+
 
 //score panel
 Route::get('/score', $controller_path . '\score\ScoreController@index')->name('show-score-panel');

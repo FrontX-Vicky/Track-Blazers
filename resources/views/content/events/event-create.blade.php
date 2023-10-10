@@ -8,7 +8,7 @@
 <!-- Basic Layout -->
 
 <div class="row mb-5">
-    <form class="browser-default-validation" id="event_form" method="POST" action="{{ route('insert-event') }}">
+    <form class="browser-default-validation" id="event_form" method="POST" action="{{ route('event-insert') }}">
         @csrf
         @method('POST')
         <div class="row">
@@ -18,7 +18,8 @@
                     <div class="mb-2">
 
                         {{-- <label class="form-label" for="distance">Distance:</label> --}}
-                        <select class="form-select form-select-sm" id="meet_id" name="meet_id" required="" value="{{ $data['meet_id'] }}" @php if($data['meet_id'] !=null) echo "readonly" ; @endphp>
+                        <input type="hidden" name="meet_id" value="{{ $data['meet_id'] }}">
+                        <select class="form-select form-select-sm" id="meet_id" name="meet_id" required="" value="{{ $data['meet_id'] }}" @php if($data['meet_id'] != null) echo "disabled" ; @endphp>
                             <option value="">Select</option>
                             @foreach ($data['meets'] as $meet)
                             <option value="{{ $meet->id }}" @php if($meet->id == $data['meet_id']) echo "selected"; @endphp>{{ $meet->name}}</option>
@@ -31,7 +32,7 @@
                     <legend class="float-none w-auto px-3 fs-5">Event Information</legend>
                     <div class="mb-2">
                         <label class="form-label" for="event_id">Event #1</label>
-                        <input type="number" class="form-control form-control-sm" id="event_id" name="event_id" placeholder="" required>
+                        <input type="number" class="form-control form-control-sm" id="event_id" name="event_id" value="{{ $data['event_id'] }}" placeholder="" required>
                     </div>
                     <div class="mb-2">
                         <label class="form-label" for="event_name">Event Name</label>
@@ -348,13 +349,13 @@
             console.log(fd);
             // return;
             $.ajax({
-                url: "/event/insert-event"
+                url: "/event/event-insert"
                 , type: 'POST'
                 , data: fd
                 , success: function(result) {
                   console.log(result);
                     if (result.status == '1') {
-                      window.location.replace('/events')
+                      window.location.replace('/event/event-create/'+result.data.meet_id)
                     }
                 }
                 , error: function(jqXhr, textStatus, errorMessage) {}

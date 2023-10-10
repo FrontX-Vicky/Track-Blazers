@@ -18,7 +18,7 @@ class AthleteController extends Controller
 
   public function createAthlete()
   {
-    return view('content.athlete.create-athlete');
+    return view('content.athlete.athlete-create');
   }
 
   public function insertAthlete(Request $req)
