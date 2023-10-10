@@ -27,7 +27,7 @@ class MenuServiceProvider extends ServiceProvider
     $verticalMenuJson = file_get_contents(base_path('resources/menu/verticalMenu.json'));
     $verticalMenuData = json_decode($verticalMenuJson);
 
-    $meetData = Meets::all()->toArray();
+    $meetData = Meets::where('park', '=', '0')->get()->toArray();
     // $meetData = compact('meetData');
     // Share all menuData to all the views
     \View::share('meetData', [$meetData]);

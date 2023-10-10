@@ -97,6 +97,8 @@ $containerNav = 'container-xxl';
             <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name">
           </div>
         </div> --}}
+                  <div class="alert alert-danger" style="display: none;" role="alert" id="msg"></div>
+
                 <div class="row g-2">
                     <label for="defaultSelect" class="form-label">Select batch to add</label>
                     <select id="batchselect" name="batchselect" class="form-select">
@@ -111,6 +113,7 @@ $containerNav = 'container-xxl';
                 <button type="button" id="submitBtn" class="btn btn-primary">Save</button>
             </div>
         </div>
+
     </div>
 </div>
 <!--/ Basic Bootstrap Table -->
@@ -138,16 +141,17 @@ $containerNav = 'container-xxl';
         event.preventDefault();
         var file_id = $('#batchselect').val();
         $.ajax({
-            url: "/meet/athlete-inserts",
+            url: "/meet/athletes-insert",
             type: 'POST',
             data: {
                 file_id: file_id,
                 meet_id: meet_id,
             }
             , success: function(result) {
-                if (result.status == 1) {
-                    // $('#tbody').html(result);
+                if (result.error == 1) {
                 }
+                $('#msg').show();
+                $('#msg').html(result.msg);
             }
             , error: function(jqXhr, textStatus, errorMessage) {}
         });

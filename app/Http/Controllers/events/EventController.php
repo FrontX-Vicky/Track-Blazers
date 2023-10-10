@@ -236,4 +236,8 @@ class EventController extends Controller
     $rounds->time = $round_time;
     $rounds->save();
   }
+
+  public function check_availablity(Request $req){
+    dd($req);
+  }
 }

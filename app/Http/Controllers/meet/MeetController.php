@@ -72,7 +72,7 @@ class MeetController extends Controller
 
   public function getMeet()
   {
-     $meets['data'] = Meets::all();
+     $meets['data'] = Meets::where('park', '=', '0')->all();
      return json_encode($meets);
   }
 
@@ -82,9 +82,12 @@ class MeetController extends Controller
      $meet = Meets::find($data['meet_id']);
      $events = Events::where('meet_id', '=' ,$data['meet_id'])->get();
      $eventsArray = $events->toArray();
-     $file = Uploads::find($data['file_id']);
      $response = [];
-
+     if(count($eventsArray)==0){
+        return $response = ['error' => 1, 'msg' => 'No event found!'] ;
+     }
+     $file = Uploads::find($data['file_id']);
+     $events_arr = [];
     $gender_arr = ['O', 'M', 'F'];
     foreach($eventsArray as $event){
       $events_arr[$event['event_id']] = $event;
@@ -125,6 +128,7 @@ class MeetController extends Controller
                 $score_data->save();
               }
             }else{
+               $response = ['error' => 0, 'msg' => 'Athletes added successfully'];
                $response['data']['gender_missmatch'][$event['name']][] = $row;
             }
           } else {
