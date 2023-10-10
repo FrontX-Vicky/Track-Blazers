@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-md mb-4 mb-md-0">
-        <form class="needs-validation" id="athlete-form" novalidate method="POST" action="/athlete/insert-athlete">
+        <form class="needs-validation" id="athlete-form" novalidate method="POST" action="/athlete/athlete-insert">
             @csrf
             @method('POST')
             <fieldset class="border rounded-3 px-3 bg-white">

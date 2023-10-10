@@ -20,7 +20,7 @@
           "slug": "layouts-without-menu"
         },
         {
-          "url": "/meet/create-meet",
+          "url": "/meet/meet-create",
           "name": "Create Meet",
           "slug": ""
         }
@@ -40,7 +40,7 @@
           "slug": "layouts-without-menu"
         },
         {
-          "url": "/event/create-event",
+          "url": "/event/event-create",
           "name": "Create Event",
           "slug": ""
         }

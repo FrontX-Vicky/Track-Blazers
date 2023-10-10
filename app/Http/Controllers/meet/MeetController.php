@@ -15,7 +15,7 @@ class MeetController extends Controller
 {
   public function index()
   {
-    $meets = Meets::simplePaginate(10);
+    $meets = Meets::where('park', '=' ,'0')->simplePaginate(10);
     // $data = compact('meets');
     return view('content.meet.manage-meets', ['data' => $meets]);
   }
@@ -46,6 +46,29 @@ class MeetController extends Controller
     return redirect()->route('meets');
   }
 
+  public function updateMeet(Request $req)
+  {
+    $req = $req->all();
+    $meet = Meets::find($req['id']);
+    $meet->name = $req['name'];
+    $meet->location = $req['location'];
+    $meet->from_date	 = $req['from_date'];
+    $meet->to_date = $req['to_date'];
+    $meet->scoring = isset($req['scoring']) ? $req['scoring']: '0';
+    $meet->save();
+
+    return redirect()->route('meets');
+  }
+
+  public function editMeet($id = null)
+  {
+    if($id != null){
+      $meet = Meets::find($id)->toArray();
+      return view('content.meet.meet-edit', ['meet' => $meet]);
+    }else{
+      return view('content.pages.pages-misc-error');
+    }
+  }
 
   public function getMeet()
   {
@@ -130,6 +153,13 @@ class MeetController extends Controller
        return $random_text;
     }
 
+  }
+
+  public function deleteMeet($id = null){
+    if($id != null){
+      $meet = Meets::where('id', $id)->update(['park' => '1']);
+    }
+    return $this->index();
   }
 
   public function generate_password(){
