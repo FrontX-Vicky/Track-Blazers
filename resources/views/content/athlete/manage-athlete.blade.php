@@ -191,7 +191,7 @@ $counter++;
       event.preventDefault();
       var file_id = $('#batchselect').val();
       $.ajax({
-          url: "/meet/athlete-inserts",
+          url: "/meet/athletes-insert",
           type: 'POST',
           data: {
               file_id: file_id,
