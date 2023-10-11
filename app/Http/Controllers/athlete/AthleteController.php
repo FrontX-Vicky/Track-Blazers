@@ -10,7 +10,7 @@ class AthleteController extends Controller
 {
   public function index()
   {
-    $athletes = Athletes::simplePaginate(10);
+    $athletes = Athletes::paginate(10);
     // $data = compact('meets');
     return view('content.athlete.manage-athlete', ['data' => $athletes]);
     // return view('content.layouts-example.layouts-container');

@@ -15,7 +15,7 @@ class MeetController extends Controller
 {
   public function index()
   {
-    $meets = Meets::where('park', '=' ,'0')->simplePaginate(10);
+    $meets = Meets::where('park', '=' ,'0')->paginate(10);
     // $data = compact('meets');
     return view('content.meet.manage-meets', ['data' => $meets]);
   }

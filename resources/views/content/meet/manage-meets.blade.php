@@ -38,6 +38,8 @@ $containerNav = 'container-xxl';
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
+
+                @if (count($data)>0)
                 @php
                 $counter = 1;
                 @endphp
@@ -64,19 +66,22 @@ $containerNav = 'container-xxl';
                             </div>
                         </div>
                     </td>
-
                 </tr>
                 @php
                 $counter++;
                 @endphp
                 @endforeach
+                @else
+                  <tr><td colspan="9" align="center">No Data Found</td> </tr>
+                @endif
+
 
             </tbody>
         </table>
 
     </div>
     <div class="card-footer">
-        <div class="mt-5 d-flex justify-content-end">
+        <div class="mt-5 col-md-12">
             {{$data->links()}}
         </div>
     </div>
