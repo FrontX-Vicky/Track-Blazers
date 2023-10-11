@@ -90,6 +90,18 @@
           "slug": "layouts-without-menu"
         }
       ]
+    },
+    {
+      "name": "Reports",
+      "icon": "menu-icon tf-icons bx bxs-report",
+      "slug": "reports",
+      "submenu": [
+        {
+          "url": "reports/meet-program",
+          "name": "Meet Program",
+          "slug": "meet-program"
+        }
+      ]
     }
   ]
 }

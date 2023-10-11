@@ -24,7 +24,7 @@
     <div class="mb-2 mx-5">
 
         <label class="form-label" for="distance">Event :</label>
-        <select class="form-select form-select" id="event_id" name="event_id" required="" data-value="">
+        <select class="form-select form-select" id="event_no" name="event_no" required="" data-value="">
             <option value="">Select</option>
             @foreach ($events as $event)
             <option value="{{ $event->id }}">{{ $event->name}}</option>
@@ -78,14 +78,14 @@
             }
         });
 
-        const eventDropdown = document.getElementById('event_id');
+        const eventDropdown = document.getElementById('event_no');
 
-        function get_athletes(event_id = '') {
+        function get_athletes(event_no = '') {
             $.ajax({
                 url: "/score/score-panel"
                 , type: 'POST',
                 data : {
-                  event_id
+                  event_no
                 }
 
                 , success: function(result) {

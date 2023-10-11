@@ -24,7 +24,7 @@ class EventController extends Controller
 
     //   $events = Events::select([
     //     'events.id as id',
-    //     'events.event_id as event_id',
+    //     'events.event_no as event_no',
     //     'events.meet_id as meet_id',
     //     'meets.name as meet',
     //     'events.name as name',
@@ -88,25 +88,25 @@ class EventController extends Controller
     $gender = Gender::all();
     $measurement_system = Measurement_system::all();
     $position_assignment = Position_assignment::all()->where('hide', '=', '0');
-    $events = Events::select('event_id')->where('meet_id', '=', $id)->where('park', '=', '0')->orderBy('event_id', 'asc')->get()->toArray();
+    $events = Events::select('event_no')->where('meet_id', '=', $id)->where('park', '=', '0')->orderBy('event_no', 'asc')->get()->toArray();
 
-    $event_id = 0;
+    $event_no = 0;
 
     for($i = 0; $i <= (count($events)); $i++){
-      $event_id++;
+      $event_no++;
       if(isset($events[$i])){
-        if($events[$i]['event_id'] != ($event_id)){
+        if($events[$i]['event_no'] != ($event_no)){
           break;
         }
       }
     }
 
     // echo "<pre>";
-    // print_r($event_id);exit;
+    // print_r($event_no);exit;
 
     $data['data'] = compact('meets', 'advancement', 'distance_master', 'event_type', 'flight_orders', 'gender', 'measurement_system', 'position_assignment');
     $data['data']['meet_id'] = $id;
-    $data['data']['event_id'] = $event_id;
+    $data['data']['event_no'] = $event_no;
     return view('content.events.event-create', $data);
   }
 
@@ -122,9 +122,9 @@ class EventController extends Controller
     $gender = Gender::all();
     $measurement_system = Measurement_system::all();
     $position_assignment = Position_assignment::all()->where('hide', '=', '0');
-    $rounds = Rounds::where('event_row_id', '=', $id)->get()->toArray();
+    $rounds = Rounds::where('event_id', '=', $id)->get()->toArray();
     $data['data'] = compact('event','meets','rounds','advancement', 'distance_master', 'event_type', 'flight_orders', 'gender', 'measurement_system', 'position_assignment');
-    $data['data']['event_id'] = $id;
+    $data['data']['event_no'] = $id;
     return view('content.events.event-edit', $data);
   }
 
@@ -133,7 +133,7 @@ class EventController extends Controller
     // dd($req->all());
     // $events_data = unserialize($req);
     $events = new Events;
-    $events->event_id   = $req['event_id'];
+    $events->event_no   = $req['event_no'];
     $events->meet_id   = $req['meet_id'];
     $events->name = $req['event_name'];
     $events->gender   = $req['gender'];
@@ -159,12 +159,12 @@ class EventController extends Controller
     $events->save();
 
     foreach ($req['round_id'] as $key => $val) {
-      $event_id = $events->id;
+      $event_no = $events->id;
       $round_no = $val;
       $round_name =  $req['round_name'][$key];
       $round_date =  $req['round_date'][$key];
       $round_time =  $req['round_time'][$key];
-      $this->insertRound($event_id, $round_no, $round_name, $round_date, $round_time);
+      $this->insertRound($event_no, $round_no, $round_name, $round_date, $round_time);
     }
 
     // echo $events->id;
@@ -179,8 +179,8 @@ class EventController extends Controller
   {
     // dd($req->all());
     // $events_data = unserialize($req);
-    $event = Events::find($req['event_row_id']);
-    $event->event_id   = $req['event_id'];
+    $event = Events::find($req['event_id']);
+    $event->event_no   = $req['event_no'];
     $event->meet_id   = $req['meet_id'];
     $event->name = $req['event_name'];
     $event->gender   = $req['gender'];
@@ -204,14 +204,14 @@ class EventController extends Controller
     $event->modified_by = "1";
     $event->created_at = date("Y-m-d h:i:s");
     $event->save();
-    Rounds::where('event_row_id', '=', $req['event_row_id'])->delete();
+    Rounds::where('event_id', '=', $req['event_id'])->delete();
     foreach ($req['round_id'] as $key => $val) {
-      $event_id = $event->id;
+      $event_no = $event->id;
       $round_no = $val;
       $round_name =  $req['round_name'][$key];
       $round_date =  $req['round_date'][$key];
       $round_time =  $req['round_time'][$key];
-      $this->insertRound($event_id, $round_no, $round_name, $round_date, $round_time);
+      $this->insertRound($event_no, $round_no, $round_name, $round_date, $round_time);
     }
 
     $response = ['data' => '', "status" => 1, "msg" => 'Succcess!'];
@@ -226,10 +226,10 @@ class EventController extends Controller
     return $this->index();
   }
 
-  public function insertRound($event_id, $round_no, $round_name, $round_date, $round_time)
+  public function insertRound($event_no, $round_no, $round_name, $round_date, $round_time)
   {
     $rounds = new Rounds();
-    $rounds->event_row_id = $event_id;
+    $rounds->event_id = $event_no;
     $rounds->round_no = $round_no;
     $rounds->name = $round_name;
     $rounds->date = $round_date;

@@ -165,7 +165,7 @@
       $(".score_input").on("focusout", function(event) {
             var row_id = $(this).closest('tr').data('row-id');
             // const CSRF = $('meta[name="csrf-token"]').attr('content');
-            var event_id = $('#event_id').val();
+            var event_no = $('#event_no').val();
             $.ajax({
                 url: "/score/update-score",
                 type: 'POST',
@@ -173,7 +173,7 @@
                     col: event.target.name,
                     val: event.target.value,
                     row_id,
-                    event_id
+                    event_no
                 },
                 success: function(result) {
                     if (result.status = 1) {
@@ -193,7 +193,7 @@
                 value = 0 ;
             }
             // const CSRF = $('meta[name="csrf-token"]').attr('content');
-            var event_id = $('#event_id').val();
+            var event_no = $('#event_no').val();
             $.ajax({
                 url: "/score/update-score",
                 type: 'POST',
@@ -201,7 +201,7 @@
                     col: col_name,
                     val: value,
                     row_id,
-                    event_id
+                    event_no
                 },
                 success: function(result) {
                     if (result.status = 1) {

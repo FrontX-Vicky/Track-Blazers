@@ -77,7 +77,7 @@ $counter++;
             <thead>
                 <tr>
                     <th>Sr. No.</th>
-                    <th>Event ID</th>
+                    <th>Event No</th>
                     <th>Event Name</th>
                     <th>Event Type </th>
                     <th>Gender</th>
@@ -110,7 +110,7 @@ $counter++;
                 @foreach ( $data as $events)
                 <tr>
                     <td class="">{{$counter}}</td>
-                    <td><strong>{{$events->event_id}}</strong></td>
+                    <td><strong>{{$events->event_no}}</strong></td>
                     <td>{{$events->name}}</td>
                     <td>{{$events->event_type}}</td>
                     <td>{{$events->gender}}</td>

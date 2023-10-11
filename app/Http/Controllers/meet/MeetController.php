@@ -90,7 +90,7 @@ class MeetController extends Controller
      $events_arr = [];
     $gender_arr = ['O', 'M', 'F'];
     foreach($eventsArray as $event){
-      $events_arr[$event['event_id']] = $event;
+      $events_arr[$event['event_no']] = $event;
     }
     // print_r($events_arr);exit;
     $gender_missmatch = [];
@@ -111,7 +111,7 @@ class MeetController extends Controller
               $athlete->lname	 = $row[1];
               $athlete->affiliation	 = $row[4];
               $athlete->gender = $row[3];
-              $athlete->event_id = $row[5];
+              $athlete->event_no = $row[5];
               $athlete->meet_id = $meet->id;
               $athlete->batch_id = $file->id;
               $athlete->created_by = "48077";

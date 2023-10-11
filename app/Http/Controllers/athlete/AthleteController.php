@@ -31,7 +31,7 @@ class AthleteController extends Controller
     $athlete->lname	 = $req['lname'];
     $athlete->affiliation	 = $req['affiliation'];
     $athlete->gender = $req['gender'];
-    $athlete->event_id = $req['event_id'];
+    $athlete->event_no = $req['event_no'];
     $athlete->created_by = "48077";
     $athlete->created_at = date("Y-m-d h:i:s");
     $athlete->save();

@@ -29,9 +29,9 @@
                 <fieldset class="border rounded-3 p-3 bg-white">
                     <legend class="float-none w-auto px-3 fs-5">Event Information</legend>
                     <div class="mb-2">
-                        <label class="form-label" for="event_id">Event #1</label>
-                        <input type="number" class="form-control form-control-sm" id="event_id" name="event_id" placeholder="" value="{{$data['event']['event_id']}}" required>
-                        <input type="hidden" name="event_row_id" value="{{$data['event']['id']}}" />
+                        <label class="form-label" for="event_no">Event #1</label>
+                        <input type="number" class="form-control form-control-sm" id="event_no" name="event_no" placeholder="" value="{{$data['event']['event_no']}}" required>
+                        <input type="hidden" name="event_id" value="{{$data['event']['id']}}" />
                     </div>
                     <div class="mb-2">
                         <label class="form-label" for="event_name">Event Name</label>
