@@ -67,9 +67,9 @@ class EventController extends Controller
     // $events = Events_view::where('meet_id' , '=', session()->all()['meet_id'])->simplePaginate(10);
 
     if (isset(session()->all()['meet_id'])) {
-      $events = Events_view::where('meet_id', '=', session()->all()['meet_id'])->where('park', '=', '0')->simplePaginate(10);
+      $events = Events_view::where('meet_id', '=', session()->all()['meet_id'])->where('park', '=', '0')->paginate(10);
     } else {
-      $events = Events_view::where('park', '=', '0')->simplePaginate(10);
+      $events = Events_view::where('park', '=', '0')->paginate(10);
     }
     return view('content.events.manage-event', ['data' => $events]);
   }

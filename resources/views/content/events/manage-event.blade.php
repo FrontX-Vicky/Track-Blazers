@@ -65,14 +65,14 @@ $counter++;
 
 <!-- Basic Bootstrap Table -->
 <style>
-    nav .w-5 {
-        display: none;
-    }
+  nav .w-5 {
+      display: none;
+  }
 
 </style>
 <div class="card">
     <h5 class="card-header">Events</h5>
-    <div class="table-responsive text-nowrap" style="min-height: 70vh">
+    <div class="table-responsive text-nowrap" >
         <table class="table text-center">
             <thead>
                 <tr>
@@ -102,6 +102,8 @@ $counter++;
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
+
+                @if(count($data)>0)
                 @php
                 $counter = 1;
                 @endphp
@@ -147,14 +149,18 @@ $counter++;
                 @endphp
                 @endforeach
 
+                @else
+                  <tr><td colspan="15" align="center">No Data Found</td> </tr>
+                @endif
+
             </tbody>
         </table>
 
     </div>
     <div class="card-footer">
-        <div class="mt-5 d-flex justify-content-end">
-            {{$data->links()}}
-        </div>
+      <div class="mt-5 col-md-12">
+          {{$data->links()}}
+      </div>
     </div>
 </div>
 <!--/ Basic Bootstrap Table -->
