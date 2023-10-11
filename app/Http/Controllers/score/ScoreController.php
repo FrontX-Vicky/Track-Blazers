@@ -27,9 +27,9 @@ class ScoreController extends Controller
   public function showScorepanel(Request $req)
   {
     $options = ['', 'X', '-', 'DNS', 'r'];
-    if ($req['event_id'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
+    if ($req['event_no'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
       $meet_id = session()->all()['meet_id'];
-      $athletes['score_data'] = Scoresheet::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->simplePaginate(10);
+      $athletes['score_data'] = Scoresheet::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->simplePaginate(10);
       // echo($athletes->toSql());
     } else {
 
@@ -69,9 +69,9 @@ class ScoreController extends Controller
   public function calculations($req)
   {
 
-    if ($req['event_id'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
+    if ($req['event_no'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
       $meet_id = session()->all()['meet_id'];
-      $athletes = Scoresheet::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get()->toArray();
+      $athletes = Scoresheet::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->get()->toArray();
       // print_r($athletes);
 
       foreach ($athletes as $athlete) {

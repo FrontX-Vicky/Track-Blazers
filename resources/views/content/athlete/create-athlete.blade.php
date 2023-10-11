@@ -52,8 +52,8 @@
                     </select>
                 </div> --}}
                 <div class="mb-3">
-                    <label for="event_id" class="form-label">Event</label>
-                    <select class="form-select form-select-sm" id="event_id" name="event_id" required="">
+                    <label for="event_no" class="form-label">Event</label>
+                    <select class="form-select form-select-sm" id="event_no" name="event_no" required="">
                         <option value="">Select Event</option>
                         <option value="10">Event 1</option>
                         <option value="11">Event 2</option>
