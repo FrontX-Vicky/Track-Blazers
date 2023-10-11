@@ -122,3 +122,6 @@ Route::get('/uploads/upload-attachment', $controller_path . '\uploads\UploadCont
 Route::get('/uploads/', $controller_path . '\uploads\UploadController@index')->name('manage-uploads');
 Route::post('/upload/upload', $controller_path . '\uploads\UploadController@upload')->name('upload-upload');
 Route::get('/upload/get-uploads', $controller_path . '\uploads\UploadController@get_uploads')->name('get-upload');
+
+//Reports
+Route::get('/reports/meet-program', $controller_path . '\report\ReportController@meetProgram')->name('meet-program');
