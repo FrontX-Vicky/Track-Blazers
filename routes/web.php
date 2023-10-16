@@ -125,3 +125,7 @@ Route::get('/upload/get-uploads', $controller_path . '\uploads\UploadController@
 
 //Reports
 Route::get('/reports/meet-program', $controller_path . '\report\ReportController@meetProgram')->name('meet-program');
+Route::post('/reports/get-meet-program-report', $controller_path . '\report\ReportController@getMeetProgramReport')->name('get-meet-program-report');
+
+//pdf
+Route::get('/pdf/test', $controller_path . '\pdf\PDFController@generatePDF')->name('pdf-test');

@@ -111,6 +111,7 @@ class MeetController extends Controller
               $athlete->lname	 = $row[1];
               $athlete->affiliation	 = $row[4];
               $athlete->gender = $row[3];
+              $athlete->event_id = $event['id'];
               $athlete->event_no = $row[5];
               $athlete->meet_id = $meet->id;
               $athlete->batch_id = $file->id;
