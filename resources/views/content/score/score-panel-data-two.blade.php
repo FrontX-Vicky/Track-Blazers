@@ -4,7 +4,7 @@
         <th rowspan="3" style="text-align:center">UID</th>
         <th rowspan="3" style="text-align:center">Name</th>
         <th rowspan="3" style="text-align:center">State</th>
-        <th colspan="22" style="text-align: center; color:black"><b>PERFORMANCE at HEIGHTS</b></th>
+        <th colspan="31" style="text-align: center; color:black"><b>PERFORMANCE at HEIGHTS</b></th>
         {{-- <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">THREE</b><br> Trials</th>
     <th rowspan="2" style="text-align: center; ">Position<br>after three<br>Trials</th>
     <th colspan="2" style="text-align: center; color:black"><b>TRIALS</b></th>
@@ -23,9 +23,21 @@
         <th colspan="3">M.</th>
         <th colspan="3">M.</th>
         <th colspan="3">M.</th>
+        <th colspan="3">M.</th>
+        <th colspan="3">M.</th>
+        <th colspan="3">M.</th>
         <th rowspan="2">BEST<br>JUMP</th>
     </tr>
     <tr class="text-nowrap">
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -58,55 +70,27 @@
     <td></td>
     <td>
         <div>
-            <select data-col-name="r_1_1" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_11" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_1_1){ echo "selected"; } @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_11){ echo "selected"; } @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_1_2" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_12" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_1_2){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_12){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_1_3" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_13" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_1_3){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    {{-- --}}
-    <td>
-        <div>
-            <select data-col-name="r_2_1" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_2_2" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_2_3" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_13){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
@@ -114,55 +98,27 @@
     {{-- --}}
     <td>
         <div>
-            <select data-col-name="r_3_1" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_21" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_3_2" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_22" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_3_3" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_23" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    {{-- --}}
-    <td>
-        <div>
-            <select data-col-name="r_4_1" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_4_2" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_4_3" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
@@ -170,55 +126,27 @@
     {{-- --}}
     <td>
         <div>
-            <select data-col-name="r_5_1" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_31" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_5_2" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_32" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_5_3" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_33" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    {{-- --}}
-    <td>
-        <div>
-            <select data-col-name="r_6_1" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_6_2" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_6_3" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
@@ -226,55 +154,27 @@
     {{-- --}}
     <td>
         <div>
-            <select data-col-name="r_7_1" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_41" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_7_2" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_42" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_7_3" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_43" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    {{-- --}}
-    <td>
-        <div>
-            <select data-col-name="r_8_1" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_8_2" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
-                @endforeach
-            </select>
-        </div>
-    </td>
-    <td>
-        <div>
-            <select data-col-name="r_8_3" class="form-select form-select-sm mark-dropdown">
-                @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
@@ -282,27 +182,27 @@
     {{-- --}}
     <td>
         <div>
-            <select data-col-name="r_9_1" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_51" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_9_2" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_52" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_9_3" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_53" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
@@ -310,32 +210,159 @@
     {{-- --}}
     <td>
         <div>
-            <select data-col-name="r_10_1" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_61" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_1){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_10_2" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_62" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_2){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
     <td>
         <div>
-            <select data-col-name="r_10_3" class="form-select form-select-sm mark-dropdown">
+            <select data-col-name="r_63" class="form-select form-select-sm mark-dropdown">
                 @foreach ($options as $item)
-                <option value="{{$item}}" @php if($item==$value->r_2_3){ echo "selected";} @endphp>{{$item}}</option>
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    {{-- --}}
+    <td>
+        <div>
+            <select data-col-name="r_71" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_72" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_73" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    {{-- --}}
+    <td>
+        <div>
+            <select data-col-name="r_81" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_82" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_83" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    {{-- --}}
+    <td>
+        <div>
+            <select data-col-name="r_91" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_92" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_93" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    {{-- --}}
+    <td>
+        <div>
+            <select data-col-name="r_101" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_21){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_102" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_22){ echo "selected";} @endphp>{{$item}}</option>
+                @endforeach
+            </select>
+        </div>
+    </td>
+    <td>
+        <div>
+            <select data-col-name="r_103" class="form-select form-select-sm mark-dropdown">
+                @foreach ($options as $item)
+                <option value="{{$item}}" @php if($item==$value->r_23){ echo "selected";} @endphp>{{$item}}</option>
                 @endforeach
             </select>
         </div>
     </td>
 
+    <td>
+        <div>
+            <input name="" class="form-control form-control-sm my-2" type="text" value="{{$value->position_final}}" readonly />
+        </div>
+    </td>
+    <td>
+        <div>
+            <input name="" class="form-control form-control-sm my-2" type="text" value="{{$value->position_final}}" readonly />
+        </div>
+    </td>
+    <td>
+        <div>
+            <input name="" class="form-control form-control-sm my-2" type="text" value="{{$value->position_final}}" readonly />
+        </div>
+    </td>
     <td>
         <div>
             <input name="" class="form-control form-control-sm my-2" type="text" value="{{$value->position_final}}" readonly />

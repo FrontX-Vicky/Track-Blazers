@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Athletes;
 use App\Models\Events;
 use App\Models\Scoresheet_v1;
-use App\Models\Scoretable;
+use App\Models\Scoretable_v1;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -49,10 +49,10 @@ class ScoreController extends Controller
   {
     $post = $req->all();
     $id = $post['row_id'];
-    $score_row = Scoretable::find($id);
+    $score_row = Scoretable_v1::find($id);
     // echo($score_row);
     if (!is_null($score_row)) {
-      $update = Scoretable::where('id', $id)
+      $update = Scoretable_v1::where('id', $id)
         ->update([$post['col'] => $post['val']]);
       $data['status'] = $update;
     }
@@ -99,10 +99,10 @@ class ScoreController extends Controller
           } else {
             $max = 'NM';
           }
-          $update = Scoretable::where('id', $athlete['id'])->update(['best_3' => $max]);
+          $update = Scoretable_v1::where('id', $athlete['id'])->update(['best_3' => $max]);
           // print_r($athlete);
         } else {
-          $update = Scoretable::where('id', $athlete['id'])->update(['best_3' => '']);
+          $update = Scoretable_v1::where('id', $athlete['id'])->update(['best_3' => '']);
         }
       }
 
@@ -137,10 +137,10 @@ class ScoreController extends Controller
           } else {
             $max = 'NM';
           }
-          $update = Scoretable::where('id', $athlete['id'])->update(['best_5' => $max]);
+          $update = Scoretable_v1::where('id', $athlete['id'])->update(['best_5' => $max]);
           // print_r($athlete);
         } else {
-          $update = Scoretable::where('id', $athlete['id'])->update(['best_5' => '']);
+          $update = Scoretable_v1::where('id', $athlete['id'])->update(['best_5' => '']);
         }
       }
 
@@ -179,10 +179,10 @@ class ScoreController extends Controller
           } else {
             $max = 'NM';
           }
-          $update = Scoretable::where('id', $athlete['id'])->update(['best_all' => $max]);
+          $update = Scoretable_v1::where('id', $athlete['id'])->update(['best_all' => $max]);
           // print_r($athlete);
         } else {
-          $update = Scoretable::where('id', $athlete['id'])->update(['best_all' => '']);
+          $update = Scoretable_v1::where('id', $athlete['id'])->update(['best_all' => '']);
         }
       }
 
@@ -200,7 +200,7 @@ class ScoreController extends Controller
 
     foreach ($athletes as $athlete) {
       if ($counter <= $poistion_after_3_count) {
-        $score_row =  Scoretable::find($athlete['id'])->toArray();
+        $score_row =  Scoretable_v1::find($athlete['id'])->toArray();
         if ($score_row['best_3'] != 'NM' && $score_row['best_3'] != '') {
           array_push($top_8, [$score_row['id'], $counter, $score_row['best_3']]);
           $counter++;
@@ -210,7 +210,7 @@ class ScoreController extends Controller
 
     $top_8 = $this->sort_positions($top_8);
     foreach ($top_8 as $i => $position) {
-      $update = Scoretable::where('id', $position[0])->update(['position_after_3' => ($i + 1)]);
+      $update = Scoretable_v1::where('id', $position[0])->update(['position_after_3' => ($i + 1)]);
     }
     // print_r($top_8);exit;
   }
@@ -224,7 +224,7 @@ class ScoreController extends Controller
 
     foreach ($athletes as $athlete) {
       if ($counter <= $poistion_after_5_count) {
-        $score_row =  Scoretable::find($athlete['id'])->toArray();
+        $score_row =  Scoretable_v1::find($athlete['id'])->toArray();
         if ($score_row['best_5'] != 'NM' && $score_row['best_5'] != '') {
           array_push($top_8, [$score_row['id'], $counter, $score_row['best_5']]);
           $counter++;
@@ -234,7 +234,7 @@ class ScoreController extends Controller
 
     $top_8 = $this->sort_positions($top_8);
     foreach ($top_8 as $i => $position) {
-      $update = Scoretable::where('id', $position[0])->update(['position_after_5' => ($i + 1)]);
+      $update = Scoretable_v1::where('id', $position[0])->update(['position_after_5' => ($i + 1)]);
     }
     // print_r($top_8);exit;
   }
@@ -248,7 +248,7 @@ class ScoreController extends Controller
 
     foreach ($athletes as $athlete) {
       if ($counter <= $poistion_after_5_count) {
-        $score_row =  Scoretable::find($athlete['id'])->toArray();
+        $score_row =  Scoretable_v1::find($athlete['id'])->toArray();
         if ($score_row['best_all'] != 'NM' && $score_row['best_all'] != '') {
           array_push($top_8, [$score_row['id'], $counter, $score_row['best_all']]);
           $counter++;
@@ -258,7 +258,7 @@ class ScoreController extends Controller
 
     $top_8 = $this->sort_positions($top_8);
     foreach ($top_8 as $i => $position) {
-      $update = Scoretable::where('id', $position[0])->update(['position_final' => ($i + 1)]);
+      $update = Scoretable_v1::where('id', $position[0])->update(['position_final' => ($i + 1)]);
     }
     // print_r($top_8);exit;
   }

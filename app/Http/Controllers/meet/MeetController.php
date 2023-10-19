@@ -8,7 +8,7 @@ use App\Models\Events;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Meets;
-use App\Models\Scoretable;
+use App\Models\Scoretable_v1;
 use App\Models\Uploads;
 
 class MeetController extends Controller
@@ -122,11 +122,17 @@ class MeetController extends Controller
               // $counter++;
               // echo $athlete;exit;
               if($athlete->id){
-                $score_data = new Scoretable;
-                $score_data->athlete_id = $athlete->id;
-                // $score_data->created_by = "48077";
-                // $score_data->created_at = date("Y-m-d h:i:s");
-                $score_data->save();
+                if($event['id'] <= 6){
+                  $score_table_v1 = new Scoretable_v1;
+                  $score_table_v1->athlete_id = $athlete->id;
+                  $score_table_v1->save();
+                }else if($event['id'] <= 8){
+                  $score_table_v1 = new Scoretable_v1;
+                  $score_table_v1->athlete_id = $athlete->id;
+                  $score_table_v1->save();
+                }
+
+
               }
             }else{
                $response = ['error' => 0, 'msg' => 'Athletes added successfully'];
