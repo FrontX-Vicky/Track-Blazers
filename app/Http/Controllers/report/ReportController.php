@@ -4,6 +4,7 @@ namespace App\Http\Controllers\report;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\pdf\PDFController;
+use App\Models\Athletes_view;
 use App\Models\Event_rounds_view;
 use App\Models\Events_view;
 use Illuminate\Http\Request;
@@ -38,11 +39,16 @@ class ReportController extends Controller
                $event_ids[] = $event['event_id'];
             }
 
-            $events = Events_view::whereIn('id', $event_ids)->get()->toArray();
+            $athletes = Athletes_view::whereIn('event_id', $event_ids)->get()->toArray();
 
-            foreach($events as $event){
-               $data['events'][] = $event;
+
+            foreach($athletes as $athlete){
+               $data['events_rounds'][$athlete['event_name']][$athlete['round_name']][$athlete['round_date'].' '.$athlete['round_time']][] = $athlete;
             }
+
+            // print_r($data);exit;
+
+
             $PDF = new PDFController();
 
             return $PDF->generatePDF($data);

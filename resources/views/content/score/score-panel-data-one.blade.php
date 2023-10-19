@@ -1,3 +1,28 @@
+<thead>
+  <tr class="text-nowrap">
+      <th rowspan="2" style="text-align:center">#</th>
+      <th rowspan="2" style="text-align:center">UID</th>
+      <th rowspan="2" style="text-align:center">Name</th>
+      <th colspan="3" style="text-align: center; color:black"><b>TRIALS</b></th>
+      <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">THREE</b><br> Trials</th>
+      <th rowspan="2" style="text-align: center; ">Position<br>after three<br>Trials</th>
+      <th colspan="2" style="text-align: center; color:black"><b>TRIALS</b></th>
+      <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">FIVE</b><br> Trials</th>
+      <th rowspan="2" style="text-align: center; ">Position<br>after Five<br>Trials</th>
+      <th style="text-align: center; color:black;"><b></b></th>
+      <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">ALL</b><br> Trials</th>
+      <th rowspan="2" style="text-align: center; ">FINAL<br><br>POSITION</th>
+  </tr>
+  <tr class="text-nowrap">
+      <th>FIRST</th>
+      <th>SECOND</th>
+      <th>THIRD</th>
+      <th>FOURTH</th>
+      <th>FIFTH</th>
+      <th>SIXTH</th>
+  </tr>
+</thead>
+
 @foreach($score_data as $key => $value)
 <tr data-row-id="{{$value->id}}">
     <th scope="row">1</th>
@@ -161,6 +186,10 @@
   </td>
 </tr>
 @endforeach
+<tbody>
+</tbody>
+
+
 <script>
       $(".score_input").on("focusout", function(event) {
             var row_id = $(this).closest('tr').data('row-id');

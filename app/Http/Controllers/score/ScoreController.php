@@ -5,7 +5,7 @@ namespace App\Http\Controllers\score;
 use App\Http\Controllers\Controller;
 use App\Models\Athletes;
 use App\Models\Events;
-use App\Models\Scoresheet;
+use App\Models\Scoresheet_v1;
 use App\Models\Scoretable;
 use Illuminate\Http\Request;
 
@@ -26,19 +26,23 @@ class ScoreController extends Controller
 
   public function showScorepanel(Request $req)
   {
+
     $options = ['', 'X', '-', 'DNS', 'r'];
     if ($req['event_no'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
       $meet_id = session()->all()['meet_id'];
-      $athletes['score_data'] = Scoresheet::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->simplePaginate(10);
-      // echo($athletes->toSql());
-    } else {
+      $event_type = Events::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->get()->toArray()[0]['event_type'];
 
-      // $athletes['score_data'] = Scoresheet::simplePaginate(8);
+      $athletes['score_data'] = Scoresheet_v1::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->simplePaginate(10);
+      $athletes['options'] = $options;
+
+      if($event_type <= 6){
+        return view('content.score.score-panel-data-one', $athletes);
+      }else if($event_type <= 8){
+        return view('content.score.score-panel-data-two', $athletes);
+      }
+    } else {
+      return 'No Score Board assigned to Event!';
     }
-    $athletes['options'] = $options;
-    // dd($athletes['data']);
-    // $athletes['data'] = Athletes::all();
-    return view('content.score.score-panel-data', $athletes);
   }
 
   public function updateScore(Request $req)
@@ -60,7 +64,7 @@ class ScoreController extends Controller
 
   public function showScorepanelApp()
   {
-    $athletes['data'] = Scoresheet::all();
+    $athletes['data'] = Scoresheet_v1::all();
     // $athletes['data'] = Athletes::all();
     return json_encode($athletes);
     // return json_encode($data);
@@ -71,7 +75,7 @@ class ScoreController extends Controller
 
     if ($req['event_no'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
       $meet_id = session()->all()['meet_id'];
-      $athletes = Scoresheet::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->get()->toArray();
+      $athletes = Scoresheet_v1::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->get()->toArray();
       // print_r($athletes);
 
       foreach ($athletes as $athlete) {
@@ -163,6 +167,10 @@ class ScoreController extends Controller
 
           if (is_numeric($athlete['r_5'])) {
             $numeric_values[] = (float)$athlete['r_5'];
+          }
+
+          if (is_numeric($athlete['r_6'])) {
+            $numeric_values[] = (float)$athlete['r_6'];
           }
 
           // Check if there are any numeric values
