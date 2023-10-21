@@ -11,7 +11,7 @@ use PDF;
 class PDFController extends Controller
 {
     public function generatePDF($data){
-        $pdf = PDF::loadView('pdf.meet-program', $data);
+        $pdf = PDF::loadView('pdf.report-meet-program', $data);
 
         // return $pdf->stream('webappfix.pdf');
 

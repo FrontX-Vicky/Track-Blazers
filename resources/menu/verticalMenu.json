@@ -94,12 +94,12 @@
     {
       "name": "Reports",
       "icon": "menu-icon tf-icons bx bxs-report",
-      "slug": "reports",
+      "slug": "report",
       "submenu": [
         {
-          "url": "reports/meet-program",
+          "url": "reports/report-meet-program",
           "name": "Meet Program",
-          "slug": "meet-program"
+          "slug": "report-meet-program"
         }
       ]
     }
