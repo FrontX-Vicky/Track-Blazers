@@ -5,8 +5,11 @@ namespace App\Http\Controllers\score;
 use App\Http\Controllers\Controller;
 use App\Models\Athletes;
 use App\Models\Events;
+use App\Models\RoundHeightLevel;
 use App\Models\Scoresheet_v1;
+use App\Models\Scoresheet_v2;
 use App\Models\Scoretable_v1;
+use App\Models\Scoretable_v2;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -27,18 +30,22 @@ class ScoreController extends Controller
   public function showScorepanel(Request $req)
   {
 
-    $options = ['', 'X', '-', 'DNS', 'r'];
-    if ($req['event_no'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
+    if ($req['event_id'] != '' && isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id'])) {
       $meet_id = session()->all()['meet_id'];
-      $event_type = Events::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->get()->toArray()[0]['event_type'];
+      $event_type = Events::where('id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get()->toArray()[0]['event_type'];
 
-      $athletes['score_data'] = Scoresheet_v1::where('event_no', '=', $req['event_no'])->where('meet_id', '=',  $meet_id)->simplePaginate(10);
-      $athletes['options'] = $options;
 
       if($event_type <= 6){
-        return view('content.score.score-panel-data-one', $athletes);
+        $options = ['', 'X', '-', 'DNS', 'r'];
+        $data['score_data'] = Scoresheet_v1::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get();
+        $data['options'] = $options;
+        return view('content.score.score-panel-data-one', ['data' => $data]);
       }else if($event_type <= 8){
-        return view('content.score.score-panel-data-two', $athletes);
+        $options = ['', 'O', '-', 'X'];
+        $data['score_data'] = Scoresheet_v2::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get();
+        $data['height_level'] = RoundHeightLevel::where('event_id', '=', $req['event_id'])->get();
+        $data['options'] = $options;
+        return view('content.score.score-panel-data-two', ['data' => $data]);
       }
     } else {
       return 'No Score Board assigned to Event!';
@@ -49,16 +56,33 @@ class ScoreController extends Controller
   {
     $post = $req->all();
     $id = $post['row_id'];
-    $score_row = Scoretable_v1::find($id);
-    // echo($score_row);
-    if (!is_null($score_row)) {
-      $update = Scoretable_v1::where('id', $id)
-        ->update([$post['col'] => $post['val']]);
-      $data['status'] = $update;
+
+    if($post['version'] == '1'){
+      $score_row = Scoretable_v1::find($id);
+      // echo($score_row);
+      if (!is_null($score_row)) {
+        $update = Scoretable_v1::where('id', $id)
+          ->update([$post['col'] => $post['val']]);
+        $data['status'] = $update;
+      }
+    }else if($post['version'] == '2'){
+      $score_row = Scoretable_v2::find($id);
+      // echo($score_row);
+      if (!is_null($score_row)) {
+        $update = Scoretable_v2::where('id', $id)
+          ->update([$post['col'] => $post['val']]);
+        $data['status'] = $update;
+      }
     }
 
     $this->calculations($req);
     // exit;
+    return $this->showScorepanel($req);
+  }
+
+  public function updateHeight(Request $req)
+  {
+    $event = RoundHeightLevel::where('event_id', '=', $req['event_id'])->where('id', '=', $req['row_id'])->update([$req['col'] => $req['val']]);
     return $this->showScorepanel($req);
   }
 

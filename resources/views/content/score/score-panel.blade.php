@@ -26,9 +26,8 @@
 <div class="card">
     <h5 class="card-header">Score Table</h5>
     <div class="mb-2 mx-5">
-
         <label class="form-label" for="distance">Event :</label>
-        <select class="form-select form-select" id="event_no" name="event_no" required="" data-value="">
+        <select class="form-select form-select" id="event_id" name="event_id" required="" data-value="">
             <option value="">Select</option>
             @foreach ($events as $event)
             <option value="{{ $event->id }}">{{ $event->name}}</option>
@@ -36,16 +35,12 @@
 
         </select>
     </div>
-    <div class="table-responsive text-nowrap mx-2 my-5">
-        <table class="table table-bordered" id="tbody">
+    <div class="table-responsive text-nowrap mx-2 my-5" id="tbody">
 
-        </table>
-        {{-- <div class="card-footer">
-            <div class="mt-5 d-flex justify-content-end">
-                {{$data->links()}}
+
+
     </div>
-</div> --}}
-</div>
+
 </div>
 <!--/ Responsive Table -->
 
@@ -57,14 +52,14 @@
             }
         });
 
-        const eventDropdown = document.getElementById('event_no');
+        const eventDropdown = document.getElementById('event_id');
 
-        function get_athletes(event_no = '') {
+        function get_athletes(event_id = '') {
             $.ajax({
                 url: "/score/score-panel"
-                , type: 'POST',
-                data : {
-                  event_no
+                , type: 'POST'
+                , data: {
+                  event_id
                 }
 
                 , success: function(result) {

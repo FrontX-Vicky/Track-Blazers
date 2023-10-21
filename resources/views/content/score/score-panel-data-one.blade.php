@@ -1,3 +1,4 @@
+<table class="table table-bordered" >
 <thead>
   <tr class="text-nowrap">
       <th rowspan="2" style="text-align:center">#</th>
@@ -22,10 +23,17 @@
       <th>SIXTH</th>
   </tr>
 </thead>
+@php
 
+  $options = $data['options'];
+  $score_data = $data['score_data'];
+  // $counter = ($score_data->perPage() * ($score_data->currentPage() - 1)) + 1;
+  $counter = 1;
+
+@endphp
 @foreach($score_data as $key => $value)
 <tr data-row-id="{{$value->id}}">
-    <th scope="row">1</th>
+    <th scope="row">{{$counter}}</th>
     <td>{{$value->athlete_uid}}</td>
     <td>{{$value->fname.' '.$value->lname}}</td>
     <td>
@@ -185,9 +193,16 @@
       </div> --}}
   </td>
 </tr>
+@php
+  $counter++;
+@endphp
 @endforeach
-<tbody>
-</tbody>
+</table>
+{{-- <div class="card-footer">
+  <div class="mmt-5 col-md-12">
+      {{$score_data->links()}}
+  </div>
+</div> --}}
 
 
 <script>
@@ -230,7 +245,8 @@
                     col: col_name,
                     val: value,
                     row_id,
-                    event_no
+                    event_no,
+                    version: '1'
                 },
                 success: function(result) {
                     if (result.status = 1) {

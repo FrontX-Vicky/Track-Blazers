@@ -42,13 +42,7 @@ $containerNav = 'container-xxl';
 
             <tbody class="table-border-bottom-0">
 
-
-                  @if(Request::get('page') !== null && !empty(Request::get('page')))
-                      @php $counter = 1 + 10 *  Request::get('page'); @endphp
-                  @else
-                      @php  $counter = 1; @endphp
-                  @endif
-                  @php  $counter = ($data->perPage() * ($data->currentPage() - 1)) + 1; @endphp
+                @php  $counter = ($data->perPage() * ($data->currentPage() - 1)) + 1; @endphp
                 @foreach ( $data as $athlete)
                 <tr>
                     <td class="">{{$counter}}</td>

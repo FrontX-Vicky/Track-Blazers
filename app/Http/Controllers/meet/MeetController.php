@@ -8,7 +8,9 @@ use App\Models\Events;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Meets;
+use App\Models\RoundHeightLevel;
 use App\Models\Scoretable_v1;
+use App\Models\Scoretable_v2;
 use App\Models\Uploads;
 
 class MeetController extends Controller
@@ -122,24 +124,30 @@ class MeetController extends Controller
               // $counter++;
               // echo $athlete;exit;
               if($athlete->id){
-                if($event['id'] <= 6){
+                if($event['event_type'] <= 6){
                   $score_table_v1 = new Scoretable_v1;
                   $score_table_v1->athlete_id = $athlete->id;
                   $score_table_v1->save();
-                }else if($event['id'] <= 8){
-                  $score_table_v1 = new Scoretable_v1;
-                  $score_table_v1->athlete_id = $athlete->id;
-                  $score_table_v1->save();
+                }else if($event['event_type'] <= 8){
+                  $score_table_v2 = new Scoretable_v2;
+                  $score_table_v2->athlete_id = $athlete->id;
+                  $score_table_v2->save();
                 }
-
-
               }
             }else{
                $response = ['error' => 0, 'msg' => 'Athletes added successfully'];
                $response['data']['gender_missmatch'][$event['name']][] = $row;
             }
+
           } else {
               //  $response['data']['event_unuvailable'][$row[5]][] = $row;
+          }
+        }
+        foreach($events_arr as $event){
+          if($event['event_type'] <= 8 && $event['event_type'] >= 7 ){
+            $round_height_level = new RoundHeightLevel;
+            $round_height_level->event_id = $event['id'];
+            $round_height_level->save();
           }
         }
       }

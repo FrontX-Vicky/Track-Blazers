@@ -91,6 +91,7 @@ Route::get('/event/event-edit/{id?}', $controller_path . '\events\EventControlle
 Route::post('/event/event-update', $controller_path . '\events\EventController@updateEvent')->name('event-update');
 Route::get('/event/event-delete/{id?}', $controller_path . '\events\EventController@deleteEvent')->name('event-delete');
 
+
 // Meets
 Route::get('/meets', $controller_path . '\meet\MeetController@index')->name('meets');
 Route::get('/meet/meet-create', $controller_path . '\meet\MeetController@createMeet')->name('meet-create');
@@ -113,6 +114,7 @@ Route::post('/athlete/athlete-insert', $controller_path . '\athlete\AthleteContr
 Route::get('/score', $controller_path . '\score\ScoreController@index')->name('show-score-panel');
 Route::post('/score/score-panel', $controller_path . '\score\ScoreController@showScorepanel')->name('show-score-panel');
 Route::post('/score/update-score', $controller_path . '\score\ScoreController@updateScore')->name('update-score');
+Route::post('/score/score-update-height', $controller_path . '\score\ScoreController@updateHeight')->name('score-update-heigh');
 
 //score panel App
 Route::get('/score/score-panel-app', $controller_path . '\score\ScoreController@showScorepanelApp')->name('show-score-panel');
