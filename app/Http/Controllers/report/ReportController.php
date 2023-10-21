@@ -8,6 +8,7 @@ use App\Models\Athletes_view;
 use App\Models\Event_rounds_view;
 use App\Models\Events_view;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -31,24 +32,22 @@ class ReportController extends Controller
            'date' => date('d-m-Y'),
            'time' => date('H:i:s')
         ];
+        DB::enableQueryLog();
         $event_rounds = [];
         if(isset($res['ids'])) {
-            $event_rounds = Event_rounds_view::select('event_id')->whereIn('id', $res['ids'])->get()->toArray();
+            $event_rounds = Event_rounds_view::select('event_id', 'round_no')->whereIn('id', $res['ids'])->get()->toArray();
 
             foreach($event_rounds as $event){
                $event_ids[] = $event['event_id'];
+               $round_nos[] = $event['round_no'];
             }
 
-            $athletes = Athletes_view::whereIn('event_id', $event_ids)->get()->toArray();
-
-
+            $athletes = Athletes_view::whereIn('event_id', $event_ids)->whereIn('round_no', $round_nos)->get()->toArray();
             foreach($athletes as $athlete){
                $data['events_rounds'][$athlete['event_name']][$athlete['round_name']][$athlete['round_date'].' '.$athlete['round_time']][] = $athlete;
             }
 
             // print_r($data);exit;
-
-
             $PDF = new PDFController();
 
             return $PDF->generatePDF($data);

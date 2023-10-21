@@ -39,14 +39,18 @@
       </table>
   </header>
   <main>
+        @php
+          $count = 1;
+        @endphp
         @foreach ($events_rounds as $event_name => $rounds)
-            Event : {{$event_name}}<br>
             @foreach ($rounds as $round => $date_time)
+             Event : {{$event_name}}<br>
              Round : {{$round}}<br>
                 @foreach($date_time as $time => $athletes)
                  Time : {{$time}}<br><br>
                   <table id="data_table">
                   <thead><tr>
+                    <th>Sr. No.</th>
                     <th>UID</th>
                     <th>NAME</th>
                     <th>AFFILIATION</th>
@@ -55,11 +59,15 @@
 
                   @foreach($athletes as $athlete)
                     <tr>
+                      <td>{{$count}}</td>
                       <td>{{$athlete['athlete_uid']}}</td>
                       <td>{{$athlete['fname']}} {{$athlete['lname']}}</td>
                       <td>{{$athlete['affiliation']}}</td>
                       <td>NT</td>
                     </tr>
+                    @php
+                      $count++;
+                    @endphp
                   @endforeach
                 </table>
                 @endforeach
