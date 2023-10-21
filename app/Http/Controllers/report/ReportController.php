@@ -22,7 +22,7 @@ class ReportController extends Controller
 
         $data['event_rounds'] = $event_rounds;
 
-        return view('content.reports.print-meet-program', ['data' => $data]);
+        return view('content.reports.print-report-meet-program', ['data' => $data]);
     }
 
     public function getMeetProgramReport(Request $res){
@@ -53,6 +53,6 @@ class ReportController extends Controller
             return $PDF->generatePDF($data);
             // $data['event_rounds'] = $event_rounds;
         }
-        // return view('content.reports.print-meet-program', ['data' => $data]);
+        // return view('content.reports.print-report-meet-program', ['data' => $data]);
     }
 }

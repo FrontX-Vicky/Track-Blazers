@@ -205,7 +205,7 @@ $containerNav = 'container-xxl';
         };
 
         $.ajax({
-            url: "/reports/get-meet-program-report"
+            url: "/reports/get-report-meet-program-report"
             , type: 'POST'
             , data: {
                 ids: selected_rows_obj
@@ -233,7 +233,7 @@ $containerNav = 'container-xxl';
         };
 
         $.ajax({
-            url: "/reports/get-meet-program-report"
+            url: "/reports/get-report-meet-program-report"
             , type: 'POST'
             , data: {
                 ids: selected_rows_obj

@@ -126,8 +126,8 @@ Route::post('/upload/upload', $controller_path . '\uploads\UploadController@uplo
 Route::get('/upload/get-uploads', $controller_path . '\uploads\UploadController@get_uploads')->name('get-upload');
 
 //Reports
-Route::get('/reports/meet-program', $controller_path . '\report\ReportController@meetProgram')->name('meet-program');
-Route::post('/reports/get-meet-program-report', $controller_path . '\report\ReportController@getMeetProgramReport')->name('get-meet-program-report');
+Route::get('/reports/report-meet-program', $controller_path . '\report\ReportController@meetProgram')->name('report-meet-program');
+Route::post('/reports/get-report-meet-program-report', $controller_path . '\report\ReportController@getMeetProgramReport')->name('get-report-meet-program-report');
 
 //pdf
 Route::get('/pdf/test', $controller_path . '\pdf\PDFController@generatePDF')->name('pdf-test');
