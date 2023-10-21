@@ -54,3 +54,10 @@ Route::post('/get_meet_events', function(Request $req){
   $events = Events::where('meet_id', '=',  $request['meet_id'])->get();
   return $events;
 });
+
+Route::post('/server_data_update', function(Request $req){
+  $request = $req->all();
+  // $events = Events::where('meet_id', '=',  $request['meet_id'])->get();
+
+  return $request;
+});
