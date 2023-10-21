@@ -20,7 +20,7 @@ $containerNav = 'container-xxl';
     <div class="card-header">
       <div class="row">
         <div class="col"><h5>Athletes</h5></div>
-        <div class="col d-flex flex-row-reverse">  <button class="btn btn-secondary" style="@php echo isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id']) ?  '' : 'display:none' @endphp" href="javascript:void(0);" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="{{session()->all()['meet_id']}}" onclick="getData(this)"><i class="bx bx-plus me-1"></i> Add Batch</button></div>
+        <div class="col d-flex flex-row-reverse">  <button class="btn btn-secondary" style="@php echo isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id']) ?  '' : 'display:none' @endphp" href="javascript:void(0);" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" data-id="@php echo isset(session()->all()['meet_id']) && !empty(session()->all()['meet_id']) ?  session()->all()['meet_id'] : '' @endphp" onclick="getData(this)"><i class="bx bx-plus me-1"></i> Add Batch</button></div>
       </div>
 
 
@@ -41,9 +41,8 @@ $containerNav = 'container-xxl';
             </thead>
 
             <tbody class="table-border-bottom-0">
-                @php
-                $counter = 1;
-                @endphp
+
+                @php  $counter = ($data->perPage() * ($data->currentPage() - 1)) + 1; @endphp
                 @foreach ( $data as $athlete)
                 <tr>
                     <td class="">{{$counter}}</td>

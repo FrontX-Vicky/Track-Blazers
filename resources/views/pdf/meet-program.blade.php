@@ -11,11 +11,27 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+  <style>
+    table{
+      width: 100%;
+    }
+    #data_table table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    #data_table th,#data_table td {
+      padding: 15px;
+    }
+    .page-break {
+            page-break-after: always;
+        }
+
+  </style>
 </head>
 
 <body>
   <header>
-      <table style="width: 100%">
+      <table>
         <tbody>
           <tr><td style="width: 100px; height:70px">{{$header['date']}}<br>{{$header['time']}}</td><td style="border: 2px solid black;text-align:center"><h2>Sample Data</h2></td></tr>
           <tr><td colspan="2" style="text-align:center;"><u><h4>Meet Program</h4></u></td></tr>
@@ -23,11 +39,36 @@
       </table>
   </header>
   <main>
-    <pre>
+        @foreach ($events_rounds as $event_name => $rounds)
+            Event : {{$event_name}}<br>
+            @foreach ($rounds as $round => $date_time)
+             Round : {{$round}}<br>
+                @foreach($date_time as $time => $athletes)
+                 Time : {{$time}}<br><br>
+                  <table id="data_table">
+                  <thead><tr>
+                    <th>UID</th>
+                    <th>NAME</th>
+                    <th>AFFILIATION</th>
+                    <th>SEEDING</th>
+                  </tr></thead>
 
-      {{-- {{ print_r($events)}} --}}
+                  @foreach($athletes as $athlete)
+                    <tr>
+                      <td>{{$athlete['athlete_uid']}}</td>
+                      <td>{{$athlete['fname']}} {{$athlete['lname']}}</td>
+                      <td>{{$athlete['affiliation']}}</td>
+                      <td>NT</td>
+                    </tr>
+                  @endforeach
+                </table>
+                @endforeach
+                <br><br>
+                <div class="page-break"></div>
+            @endforeach
 
-    </pre>
+        @endforeach
+
   </main>
   <footer>
     <!-- place footer here -->

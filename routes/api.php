@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Meets;
 use App\Models\Events;
-use App\Models\Scoresheet;
+use App\Models\Scoresheet_v1;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Route::post('/authenticat_meet', function(Request $req){
       // $meet = Meets::where('meet_login_id', '=',  $request['meet_login_id'])->get();
       $meet = $meet->toArray()[0];
       $events = Events::where('meet_id', '=', $meet['id'])->get();
-      $athletes = Scoresheet::where('meet_id', '=',  $meet['id'])->get();
+      $athletes = Scoresheet_v1::where('meet_id', '=',  $meet['id'])->get();
       $data['meet'] = $meet;
       $data['events'] = $events;
       $data['athletes'] = $athletes;

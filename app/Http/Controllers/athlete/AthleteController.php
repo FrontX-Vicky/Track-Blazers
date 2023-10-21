@@ -37,6 +37,5 @@ class AthleteController extends Controller
     $athlete->save();
     return redirect()->route('athletes');
   }
-
-
+  
 }

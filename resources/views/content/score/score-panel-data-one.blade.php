@@ -1,6 +1,39 @@
+<table class="table table-bordered" >
+<thead>
+  <tr class="text-nowrap">
+      <th rowspan="2" style="text-align:center">#</th>
+      <th rowspan="2" style="text-align:center">UID</th>
+      <th rowspan="2" style="text-align:center">Name</th>
+      <th colspan="3" style="text-align: center; color:black"><b>TRIALS</b></th>
+      <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">THREE</b><br> Trials</th>
+      <th rowspan="2" style="text-align: center; ">Position<br>after three<br>Trials</th>
+      <th colspan="2" style="text-align: center; color:black"><b>TRIALS</b></th>
+      <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">FIVE</b><br> Trials</th>
+      <th rowspan="2" style="text-align: center; ">Position<br>after Five<br>Trials</th>
+      <th style="text-align: center; color:black;"><b></b></th>
+      <th rowspan="2" style="text-align: center; ">best of <br><b style="color:black">ALL</b><br> Trials</th>
+      <th rowspan="2" style="text-align: center; ">FINAL<br><br>POSITION</th>
+  </tr>
+  <tr class="text-nowrap">
+      <th>FIRST</th>
+      <th>SECOND</th>
+      <th>THIRD</th>
+      <th>FOURTH</th>
+      <th>FIFTH</th>
+      <th>SIXTH</th>
+  </tr>
+</thead>
+@php
+
+  $options = $data['options'];
+  $score_data = $data['score_data'];
+  // $counter = ($score_data->perPage() * ($score_data->currentPage() - 1)) + 1;
+  $counter = 1;
+
+@endphp
 @foreach($score_data as $key => $value)
 <tr data-row-id="{{$value->id}}">
-    <th scope="row">1</th>
+    <th scope="row">{{$counter}}</th>
     <td>{{$value->athlete_uid}}</td>
     <td>{{$value->fname.' '.$value->lname}}</td>
     <td>
@@ -160,7 +193,18 @@
       </div> --}}
   </td>
 </tr>
+@php
+  $counter++;
+@endphp
 @endforeach
+</table>
+{{-- <div class="card-footer">
+  <div class="mmt-5 col-md-12">
+      {{$score_data->links()}}
+  </div>
+</div> --}}
+
+
 <script>
       $(".score_input").on("focusout", function(event) {
             var row_id = $(this).closest('tr').data('row-id');
@@ -201,7 +245,8 @@
                     col: col_name,
                     val: value,
                     row_id,
-                    event_no
+                    event_no,
+                    version: '1'
                 },
                 success: function(result) {
                     if (result.status = 1) {
