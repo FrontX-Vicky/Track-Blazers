@@ -1,3 +1,18 @@
+
+<style>
+  .freez-left {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background-color: white !important;
+  }
+  .freez-right {
+      position: sticky;
+      right: 0;
+      z-index: 1;
+      background-color: white !important;
+  }
+</style>
 <table class="table table-bordered" >
 @php
 
@@ -10,13 +25,12 @@
 <thead>
     <tr class="text-nowrap">
         <th rowspan="3" style="text-align:center">#</th>
-        <th rowspan="3" style="text-align:center">UID</th>
-        <th rowspan="3" style="text-align:center">Name</th>
+        <th rowspan="3" style="text-align:center" class="freez-left">UID - Name</th>
         <th rowspan="3" style="text-align:center">State</th>
         <th colspan="{{count($height_level) * 3 + 1}}" style="text-align: center; color:black"><b>PERFORMANCE at HEIGHTS</b></th>
-        <th rowspan="3" style="text-align: center; ">Trials at <br><b style="color:black">HEIGHT</b><br> CLEARED</th>
-        <th rowspan="3" style="text-align: center; ">TOTAL<br><br>FAILURE</th>
-        <th rowspan="3" style="text-align: center; ">FINAL<br><br>POSITION</th>
+        <th rowspan="3" style="text-align: center; " >Trials at <br><b style="color:black">HEIGHT</b><br> CLEARED</th>
+        <th rowspan="3" style="text-align: center; " >TOTAL<br><br>FAILURE</th>
+        <th rowspan="3" style="text-align: center; " class="freez-right">FINAL<br><br>POSITION</th>
     </tr>
     <tr class="text-nowrap jump_height">
         @foreach ($height_level as $height)
@@ -45,8 +59,7 @@
 @foreach($score_data as $key => $value)
 <tr data-row-id="{{$value->id}}">
     <th scope="row">{{$counter}}</th>
-    <td>{{$value->athlete_uid}}</td>
-    <td>{{$value->fname.' '.$value->lname}}</td>
+    <td class="freez-left">{{$value->athlete_uid}} - {{$value->fname.' '.$value->lname}}</td>
     <td></td>
 
     @foreach ($value['grid'] as $grid)
@@ -79,7 +92,7 @@
             <input name="" class="form-control form-control-sm my-2" type="text" value="{{$value->failed_count}}" readonly />
         </div>
     </td>
-    <td>
+    <td class="freez-right">
         <div>
             <input name="" class="form-control form-control-sm my-2" type="text" value="{{$value->final_position}}" readonly />
         </div>
