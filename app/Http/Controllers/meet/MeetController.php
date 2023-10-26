@@ -11,6 +11,8 @@ use App\Models\Meets;
 use App\Models\RoundHeightLevel;
 use App\Models\Scoretable_v1;
 use App\Models\Scoretable_v2;
+use App\Models\ScoreTableGridV2;
+use App\Models\ScoreTableV2Header;
 use App\Models\Uploads;
 
 class MeetController extends Controller
@@ -125,13 +127,25 @@ class MeetController extends Controller
               // echo $athlete;exit;
               if($athlete->id){
                 if($event['event_type'] <= 6){
-                  $score_table_v1 = new Scoretable_v1;
-                  $score_table_v1->athlete_id = $athlete->id;
-                  $score_table_v1->save();
+                  // $score_table_v1 = new Scoretable_v1;
+                  // $score_table_v1->athlete_id = $athlete->id;
+                  // $score_table_v1->save();
                 }else if($event['event_type'] <= 8){
                   $score_table_v2 = new Scoretable_v2;
                   $score_table_v2->athlete_id = $athlete->id;
                   $score_table_v2->save();
+                  $header = '';
+                  for($i = 1; $i <= 7; $i++){
+                    $header = 'r_'.$i;
+                    for($j = 1; $j <= 3; $j++){
+                        $score_table_grid_v2 = new ScoreTableGridV2();
+                        $score_table_grid_v2->score_table_id = $score_table_v2->id;
+                        $score_table_grid_v2->athlete_id = $athlete->id;
+                        $score_table_grid_v2->header = $header;
+                        $score_table_grid_v2->col = $j;
+                        $score_table_grid_v2->save();
+                    }
+                  }
                 }
               }
             }else{
@@ -145,9 +159,18 @@ class MeetController extends Controller
         }
         foreach($events_arr as $event){
           if($event['event_type'] <= 8 && $event['event_type'] >= 7 ){
-            $round_height_level = new RoundHeightLevel;
-            $round_height_level->event_id = $event['id'];
-            $round_height_level->save();
+            // $round_height_level = new RoundHeightLevel;
+            // $round_height_level->event_id = $event['id'];
+            // $round_height_level->save();
+            // $header = '';
+            for($i = 1;$i <= 7; $i++ ){
+              $header = 'r_'.$i;
+              $round_height_level = new RoundHeightLevel;
+              $round_height_level->event_id = $event['id'];
+              $round_height_level->header = $header;
+              $round_height_level->save();
+
+            }
           }
         }
       }

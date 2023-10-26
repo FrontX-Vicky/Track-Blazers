@@ -10,6 +10,7 @@ use App\Models\Scoresheet_v1;
 use App\Models\Scoresheet_v2;
 use App\Models\Scoretable_v1;
 use App\Models\Scoretable_v2;
+use App\Models\ScoreTableGridV2;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -41,10 +42,23 @@ class ScoreController extends Controller
         $data['options'] = $options;
         return view('content.score.score-panel-data-one', ['data' => $data]);
       }else if($event_type <= 8){
+
         $options = ['', 'O', '-', 'X'];
-        $data['score_data'] = Scoresheet_v2::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get();
+        // $athlete_data = Scoretable_v2::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get();
+        $score_data = Scoresheet_v2::where('event_id', '=', $req['event_id'])->where('meet_id', '=',  $meet_id)->get();
+        foreach($score_data as $row){
+          $row['grid'] = ScoreTableGridV2::where('score_table_id', '=', $row['id'])->orderBy('id', 'asc')->get();
+          // foreach($score_grid_data as $grid_data){
+          //     $row[$grid_data['header'].$grid_data['col']] = $grid_data['value'];
+          // }
+          $data['score_data'][] = $row;
+        }
         $data['height_level'] = RoundHeightLevel::where('event_id', '=', $req['event_id'])->get();
+
+
+        // print_r($data['height_level'] );exit;
         $data['options'] = $options;
+
         return view('content.score.score-panel-data-two', ['data' => $data]);
       }
     } else {
@@ -66,11 +80,13 @@ class ScoreController extends Controller
         $data['status'] = $update;
       }
     }else if($post['version'] == '2'){
-      $score_row = Scoretable_v2::find($id);
+      $score_row = ScoreTableGridV2::where('score_table_id', $id);
       // echo($score_row);
       if (!is_null($score_row)) {
-        $update = Scoretable_v2::where('id', $id)
-          ->update([$post['col'] => $post['val']]);
+        $update = ScoreTableGridV2::where('score_table_id', $id)
+          ->where('header',  $post['header_name'])
+          ->where('col',  $post['col_name'])
+          ->update(['value' => $post['value']]);
         $data['status'] = $update;
       }
     }
